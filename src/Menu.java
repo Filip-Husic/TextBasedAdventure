@@ -12,4 +12,21 @@ public class Menu {
                 0. Exit game
                 """);
     }
+    public static void classChoice(){
+        System.out.println("""
+                Select a starting class:
+                1. Warrior\t 10HP 2dmg 2armor
+                2. Rogue\t 8HP 3dmg 1armor
+                3. Archer\t 6HP 4dmg 1armor
+                4. Wizard\t 5HP 6dmg 0armor
+                """);
+    }
+    public static void fightMenu(){
+        System.out.println("""
+                You start first, choose your action:
+                1. Attack
+                2. Defend
+                3. Drink health potion +5HP
+                """);
+    }
 }

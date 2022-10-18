@@ -1,3 +1,5 @@
+import game_interface.Menu;
+
 import java.util.Scanner;
 
 @SuppressWarnings({"BusyWait", "unused"})

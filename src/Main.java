@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-@SuppressWarnings({"BusyWait", "unused", "UnusedAssignment"})
+@SuppressWarnings({"BusyWait", "unused"})
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
@@ -90,20 +90,39 @@ public class Main {
                     System.out.println("You begin the fight!");
                     Thread.sleep(1000);
                     int goblinHealth = 3;
+                    int goblinDmg = 2;
                     do {
                         Menu.fightMenu();
                         strUserInput = scanner.nextLine();
                         boolean isChoiceValid = false;
 
+                        //noinspection ConstantConditions
                         do {
 
                         switch (strUserInput) {
                             case "1" -> {
+                                System.out.printf("You attack the goblin for %d damage.\n",playerDmg);
+                                goblinHealth -= playerDmg;
+                                if (goblinHealth <= 0){
+                                    System.out.println("The goblin dies from your mighty blow, you WIN!");
+                                }else {
+                                    System.out.printf("The goblin takes %d damage, but is still standing and getting ready to strike!\n", playerDmg);
+                                    Thread.sleep(1000);
+                                    System.out.printf("The goblin strikes you for %d damage!\nYou have %d armor.",goblinDmg, playerArmor);
+                                    if (goblinDmg > playerArmor){
+                                        playerHealth -= (goblinDmg - playerArmor);
+                                        System.out.printf("You have %d health remaining.", playerHealth);
+                                    }else {
+                                        System.out.println("You take no damage!");
+                                    }
+                                }
 
                                 isChoiceValid = true;
                             }
                             case "2" -> {
-
+                                System.out.println("You prepare to defend yourself, armor x2");
+                                Thread.sleep(1000);
+                                System.out.printf("The goblin strikes you for %d damage!\nYou have %d armor.",goblinDmg, playerArmor*2);
                                 isChoiceValid = true;
                             }
                             case "3" -> {
@@ -118,7 +137,7 @@ public class Main {
                             }
                         }
 
-                        }while (!isChoiceValid);
+                        }while (!isChoiceValid && goblinHealth > 0);
 
 
                     }while (goblinHealth>0);

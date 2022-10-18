@@ -23,7 +23,7 @@ public class Menu {
     }
     public static void fightMenu(){
         System.out.println("""
-                You start first, choose your action:
+                Choose your action:
                 1. Attack
                 2. Defend
                 3. Drink health potion +5HP

@@ -58,7 +58,7 @@ public class Menu {
                     """);
         }
 
-        public static void endGame () {
+        public void endGame () {
             //add a check if boss defeated
             System.out.println("Congratulation, you've won the game!");//if won
             //add a check in combat if HP<=0

@@ -1,11 +1,20 @@
 import game_interface.Menu;
+import map.FirstFloor;
 
 import java.util.Scanner;
 
 @SuppressWarnings({"BusyWait", "unused"})
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
+        FirstFloor firstFloor = new FirstFloor();
+
+        firstFloor.setPlayerOnMap();
+        firstFloor.showMap();
+        firstFloor.move();
+
+
+
+        /*Scanner scanner = new Scanner(System.in);
         String strUserInput;
         String playerClass = "";
 
@@ -65,12 +74,12 @@ public class Main {
                         System.out.println("Splendid!" + " Enter the dungeon " + strUserInput + " and prove your worth!");
                     }
                     default -> System.out.println("Please select a valid class from 1-4");
-                /*
+                *//*
                 1. Warrior
                 2. Rogue
                 3. Archer
                 4. Wizard
-                 */
+                 *//*
 
                 }
             }while (playerClass.equals(""));
@@ -168,7 +177,7 @@ public class Main {
             break;
         }
 
-        }while (true);
+        }while (true);*/
 
     }
 }

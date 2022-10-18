@@ -47,5 +47,8 @@ public class Monster implements Monsters{
         System.out.printf("Monster attacks for %d damage!\n", this.getDmg());
         return this.getDmg();
     }
+    public String getStats(){
+        return (getHp()+"HP/"+getMana()+"MP/"+getDefense()+"D");
+    }
 
 }

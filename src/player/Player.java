@@ -2,11 +2,20 @@ package player;
 
 @SuppressWarnings("unused")
 public class Player implements PlayerInterface{
+    private String name;
     private String role;
     private int hp;
     private int dmg;
     private int mana;
     private int defense;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getRole() {
         return role;
@@ -67,5 +76,9 @@ public class Player implements PlayerInterface{
     @Override
     public void flee() {//return to map, regen monsterHP to full, player keeps damage
 
+    }
+
+    public String getStats(){
+        return (getHp()+"HP/"+getMana()+"MP/"+getDefense()+"D");
     }
 }

@@ -16,7 +16,7 @@ public class Main {
         int playerArmor = 0;
         int healthPotion = 2;
 
-        if (strUserInput.equals("1")){
+        if (strUserInput.equals("2")){
             do {
 
                 Menu.classChoice();

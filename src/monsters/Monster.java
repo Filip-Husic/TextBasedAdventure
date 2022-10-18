@@ -9,6 +9,7 @@ public class Monster implements Monsters{
     private int defense;
 
 
+
     public int getHp() {
         return hp;
     }

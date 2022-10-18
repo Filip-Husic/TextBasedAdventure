@@ -2,9 +2,9 @@ package monsters;
 
 @SuppressWarnings("unused")
 public class Bat extends Monster{
-    public Bat() {
+    public Bat(double diff) {
         this.setHp(20);
-        this.setDmg(5);
+        this.setDmg((int) (5*diff));
         this.setMana(0);
         this.setDefense(1);
     }

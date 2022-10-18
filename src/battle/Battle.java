@@ -6,12 +6,9 @@ import player.*;
 
 @SuppressWarnings("unused")
 public class Battle {
-    //private char[][] screen = new char[20][26];
 
     public void battleScreen(Player player,Monster monster){
 
-        //[16:14] Matija Cvetan
-        //dodaj 100HP/50M/5D
 
         System.out.printf("""
                 #-----------------------------#

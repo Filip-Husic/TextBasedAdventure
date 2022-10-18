@@ -1,5 +1,6 @@
 package game_interface;
 
+import game_logic.Logic;
 import map.FirstMap;
 import monsters.*;
 import player.*;
@@ -8,18 +9,13 @@ import java.util.Scanner;
 
 @SuppressWarnings("unused")
 public class Game {
-    Bat bat;
-    Boss boss;
-    Goblin goblin;
-    Rat rat;
-    Skeleton skeleton;
     Player player;
-
-    FirstMap firstMap = new FirstMap();
-
     Scanner scanner = new Scanner(System.in);
     Menu menu = new Menu();
     String userInput;
+    String tempDiff;
+
+    Logic logic = new Logic();
 
 
     public void intro() throws InterruptedException {
@@ -39,28 +35,23 @@ public class Game {
     }
     public void startGame() throws InterruptedException {
         menu.chooseDifficulty();
-        userInput = scanner.nextLine();
-        switch (userInput) {
-            case "1" -> createMonsters(0.5);
-            case "2" -> createMonsters(1);
-            case "3" -> createMonsters(1.5);
-        }
+        do {
+            tempDiff = scanner.nextLine();
+        } while (!(tempDiff.equals("1") || tempDiff.equals("2") || tempDiff.equals("3")));
         menu.roleChoice();
         playerRoleSet();
         menu.entrance();
-        firstMap.showMap();
-        firstMap.move();
-
-
-
+        logic.playMap(player, Integer.parseInt(tempDiff));
+        menu.endGame();
     }
-    public void createMonsters(double diff){
+
+   /* public void createMonsters(double diff){
         bat = new Bat(diff);
         boss = new Boss(diff);
         goblin = new Goblin(diff);
         rat = new Rat(diff);
         skeleton = new Skeleton(diff);
-    }
+    }*/
 
     public void playerRoleSet(){
         userInput = scanner.nextLine();
@@ -95,11 +86,10 @@ public class Game {
                     System.out.println("An excellent choice, what is your name wise wizard?");
                     userInput = scanner.nextLine();
                     System.out.println("Splendid!" + " Enter the dungeon " + userInput + " and prove your worth!");
-
                 }
                 default -> System.out.println("Please select a valid role from 1-4");
             }
-        }while (player == null);
+        } while (player == null);
     }
 }
 

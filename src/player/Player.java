@@ -1,7 +1,5 @@
 package player;
 
-import monsters.Monster;
-
 @SuppressWarnings("unused")
 public class Player implements PlayerInterface{
     private String role;
@@ -50,33 +48,24 @@ public class Player implements PlayerInterface{
         this.defense = defense;
     }
     @Override
-    public void attack(Monster monster) {
+    public int attack() {
         System.out.printf("You attack for %d damage!\n", this.getDmg());
-        monster.setHp(monster.getHp() - (this.getDmg() - monster.getDefense()));
-        System.out.printf("Monster took %d damage!\n", (this.getDmg() - monster.getDefense()));
+        return this.getDmg();
     }
 
     @Override
-    public void defend(Monster monster) {
+    public int defend() {
         System.out.println("You prepare to defend.");
-        System.out.printf("Monster attacks for %d damage!\n", monster.getDmg());
-        if ((this.getDefense()*2) < monster.getDmg()){
-            this.setHp(this.getHp() - (monster.getDmg() - (this.getDefense()*2)));
-            System.out.printf("You take %d damage! (%d blocked)\n", (monster.getDmg() - (this.getDefense()*2)), (this.getDefense()*2));
-        }else {
-            System.out.println("Your mighty defence negates all damage!");
-        }
-
-
+        return (this.defense*2);//add a temp raised def variable to player
     }
 
     @Override
-    public void specialMove(Monster monster) {
-
+    public int specialMove() {//add some special moves depending on class
+        return 0;
     }
 
     @Override
-    public void flee() {
+    public void flee() {//return to map, regen monsterHP to full, player keeps damage
 
     }
 }

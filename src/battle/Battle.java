@@ -20,6 +20,7 @@ public class Battle {
                 #-----------------------------#
                 """,monster.getClass().getSimpleName(),monster.getStats(),player.getRole(),player.getStats());
         Menu.fightMenu();
+
     }
 
 }

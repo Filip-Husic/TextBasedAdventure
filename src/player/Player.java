@@ -8,6 +8,14 @@ public class Player implements PlayerInterface{
     private int dmg;
     private int mana;
     private int defense;
+    private int healthPot = 2;
+    private int manaPot = 2;
+    private int maxHealth;
+    private int maxMana;
+
+    public Player() {
+        int maxHP = hp;
+    }
 
     public String getName() {
         return name;
@@ -33,6 +41,14 @@ public class Player implements PlayerInterface{
         this.hp = hp;
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public int getDmg() {
         return dmg;
     }
@@ -49,6 +65,14 @@ public class Player implements PlayerInterface{
         this.mana = mana;
     }
 
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+    }
+
     public int getDefense() {
         return defense;
     }
@@ -56,6 +80,23 @@ public class Player implements PlayerInterface{
     public void setDefense(int defense) {
         this.defense = defense;
     }
+
+    public int getHealthPot() {
+        return healthPot;
+    }
+
+    public void setHealthPot(int healthPot) {
+        this.healthPot = healthPot;
+    }
+
+    public int getManaPot() {
+        return manaPot;
+    }
+
+    public void setManaPot(int manaPot) {
+        this.manaPot = manaPot;
+    }
+
     @Override
     public int attack() {
         System.out.printf("You attack for %d damage!\n", this.getDmg());
@@ -71,6 +112,19 @@ public class Player implements PlayerInterface{
     @Override
     public int specialMove() {//add some special moves depending on class
         return 0;
+    }
+
+    public void drinkHealthPot(){
+        if (this.getHp() < (this.maxHealth * 0.5)){
+            this.setHp(this.getHp()+this.maxHealth /2);
+        }else this.setHp(this.maxHealth);
+        System.out.println("You drink a health potion and feel much better!");
+    }
+    public void drinkManaPot(){
+        if (this.getMana() < (this.getMaxMana()*0.6)){
+            this.setMana((int) (this.getMana()+this.maxMana*0.6));
+        }else this.setMana(this.maxMana);
+        System.out.println("You drink a mana potion and feel more focused!");
     }
 
     @Override

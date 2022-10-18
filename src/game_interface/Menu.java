@@ -1,5 +1,6 @@
 package game_interface;
 
+@SuppressWarnings("unused")
 public class Menu {
 
 
@@ -7,20 +8,23 @@ public class Menu {
         System.out.println("Hello adventurer, welcome to the game.\nChoose your fate!");
     }
 
-    public static void mainMenu(){
-        System.out.println("""
-                
+    public void mainMenu(){
+        System.out.println("""                
                 1. Start a new adventure
                 0. Exit game
                 """);
     }
-    public static void classChoice(){
+
+    public void chooseDifficulty(){
+
+    }
+    public void classChoice(){
         System.out.println("""
                 Select a starting class:
-                1. Warrior\t 10HP 2dmg 2armor
-                2. Rogue\t 8HP 3dmg 1armor
-                3. Archer\t 6HP 4dmg 1armor
-                4. Wizard\t 5HP 6dmg 0armor
+                1. Warrior\t 100HP 10dmg 50mana 5defense skill: rage(x2 dmg 2 turns)
+                2. Rogue\t 80HP 15dmg 60mana 3defense skill: backstab(x2 dmg attack)
+                3. Archer\t 70HP 12dmg 40mana 2defense skill: shoot arrow(1 free attack)
+                4. Wizard\t 60HP 8dmg 100mana 1defense skill: fireball(x2 dmg attack + dmg over time 2 turns)
                 """);
     }
     public static void fightMenu(){
@@ -28,7 +32,13 @@ public class Menu {
                 Choose your action:
                 1. Attack
                 2. Defend
-                3. Drink health potion +5HP
+                3. Special
+                4. Drink health potion +5HP
+                5. Flee
                 """);
+    }
+
+    public static void endGame(){
+
     }
 }

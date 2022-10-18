@@ -1,5 +1,7 @@
 package player;
 
+import monsters.Monster;
+
 @SuppressWarnings("unused")
 public class Player implements PlayerInterface{
     private String role;
@@ -47,19 +49,28 @@ public class Player implements PlayerInterface{
     public void setDefense(int defense) {
         this.defense = defense;
     }
+    @Override
+    public void attack(Monster monster) {
+        System.out.printf("You attack for %d damage!", this.getDmg());
+        monster.setHp(monster.getHp() - (this.getDmg() - monster.getDefense()));
+        System.out.printf("Monster took %d damage!", (this.getDmg() - monster.getDefense()));
+    }
 
     @Override
-    public void attack() {
+    public void defend(Monster monster) {
+        System.out.printf("Monster attacks for %d damage!", monster.getDmg());
+        if (this.getDefense() < monster.getDmg()){
+            this.setHp(this.getHp() - (monster.getDmg() - this.getDefense()));
+            System.out.printf("You take %d damage! (%d blocked)", (monster.getDmg() - this.getDefense()), this.getDefense());
+        }else {
+            System.out.println("Your mighty defence negates all damage!");
+        }
+
 
     }
 
     @Override
-    public void defend() {
-
-    }
-
-    @Override
-    public void specialMove() {
+    public void specialMove(Monster monster) {
 
     }
 

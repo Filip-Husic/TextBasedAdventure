@@ -7,7 +7,7 @@ public class Warrior extends Player {
         this.setHp(100);
         this.setDmg(10);
         this.setMana(50);
-        this.setMana(5);
+        this.setDefense(5);
     }
 }
 

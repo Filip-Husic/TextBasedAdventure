@@ -7,6 +7,6 @@ public class Wizard extends Player {
         this.setHp(60);
         this.setDmg(8);
         this.setMana(100);
-        this.setMana(1);
+        this.setDefense(1);
     }
 }

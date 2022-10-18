@@ -5,6 +5,12 @@ import java.util.Scanner;
 @SuppressWarnings({"BusyWait", "unused"})
 public class Main {
     public static void main(String[] args) throws InterruptedException {
+
+
+
+
+
+
         Scanner scanner = new Scanner(System.in);
         String strUserInput;
         String playerClass = "";
@@ -18,7 +24,7 @@ public class Main {
         int playerArmor = 0;
         int healthPotion = 2;
 
-        if (strUserInput.equals("2")){
+        if (strUserInput.equals("1")){
             do {
 
                 Menu.classChoice();

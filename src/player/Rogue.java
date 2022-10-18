@@ -1,10 +1,17 @@
-package monsters;
+package player;
 
 @SuppressWarnings("unused")
-public class Goblin {
-    int hp = 20;
-    int dmg = 5;
-    int defense = 1;
+public class Rogue {
+    String role = "Rogue";
+    int hp = 80;
+    int dmg = 15;
+    int mana = 60;
+    int defense = 3;
+
+    public String getRole() {
+        return role;
+    }
+
 
     public int getHp() {
         return hp;
@@ -20,6 +27,14 @@ public class Goblin {
 
     public void setDmg(int dmg) {
         this.dmg = dmg;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 
     public int getDefense() {

@@ -1,14 +1,10 @@
-import game_interface.Menu;
-import map.FirstFloor;
-
-import java.util.Scanner;
+import map.FirstMap;
 
 @SuppressWarnings({"BusyWait", "unused"})
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        FirstFloor firstFloor = new FirstFloor();
+        FirstMap firstFloor = new FirstMap();
 
-        firstFloor.setPlayerOnMap();
         firstFloor.showMap();
         firstFloor.move();
 

@@ -1,17 +1,13 @@
 package game_logic;
 
+import battle.Battle;
 import chest.Chest;
-import map.FirstMap;
 import map.SecondMap;
 import monsters.Boss;
 import player.Player;
 
-import java.util.Scanner;
-
 public class LogicBoss {
 
-    Scanner scanner = new Scanner(System.in);
-    String userInput;
     SecondMap secondMap = new SecondMap();
     Chest chest = new Chest();
 
@@ -22,7 +18,9 @@ public class LogicBoss {
             secondMap.showMap();
             secondMap.move();
             if (secondMap.isNearMonster()) {
-                System.out.println("Fight"); //to do
+                System.out.println("Fight");
+                Battle battle = new Battle();
+                battle.battleStart(player,battle.boss(diff));//to do
             } else if (secondMap.isNearChest()) {
                 chest.randomStatUp(player);
             }

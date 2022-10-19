@@ -101,7 +101,7 @@ public class Player implements PlayerInterface{
 
     @Override
     public int defend() {
-        return (this.defense*2);//add a temp raised def variable to player
+        return (this.getDefense()*2);//add a temp raised def variable to player
     }
 
     @Override
@@ -110,16 +110,16 @@ public class Player implements PlayerInterface{
     }
 
     public void drinkHealthPot(){
-        if (this.getHp() < (this.maxHP * 0.5)){
-            this.setHp(this.getHp()+this.maxHP /2);
-        }else this.setHp(this.maxHP);
-        System.out.println("You drink a health potion and feel much better!");
+        if (this.getHp() < (this.getMaxHP() * 0.5)){
+            this.setHp((int) (this.getHp()+(this.getMaxHP() * 0.5)));
+        }else this.setHp(this.getMaxHP());
+        setHealthPot(getHealthPot()-1);
     }
-    public void drinkManaPot(){
-        if (this.getMana() < (this.getMaxMana()*0.6)){
-            this.setMana((int) (this.getMana()+this.maxMana*0.6));
-        }else this.setMana(this.maxMana);
-        System.out.println("You drink a mana potion and feel more focused!");
+    public void drinkManaPot() {
+        if (this.getMana() < (this.getMaxMana() * 0.6)) {
+            this.setMana((int) (this.getMana() + (this.getMaxMana() * 0.4)));
+        } else this.setMana(this.getMaxMana());
+        setManaPot(getManaPot() - 1);
     }
 
     public String getStats(){

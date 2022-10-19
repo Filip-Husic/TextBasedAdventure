@@ -1,7 +1,7 @@
 package battle;
 
 import game_interface.Menu;
-import monster.*;
+import monsters.*;
 import player.*;
 
 import java.util.ArrayList;
@@ -17,32 +17,30 @@ public class Battle {
     StringBuilder turnInfo = new StringBuilder();
 
 
-
-    public ArrayList<Monster> genMonsters(int diff){
+    public Monster randMonster(int diff){
         ArrayList<Monster> monsters = new ArrayList<>();
         monsters.add(new Bat(diff));
         monsters.add(new Rat(diff));
         monsters.add(new Goblin(diff));
         monsters.add(new Skeleton(diff));
-
-        return monsters;
-    }
-
-    public Monster randMonster(ArrayList<Monster>monsters){
         int random = new Random().nextInt(monsters.size());
         return monsters.get(random);
     }
+    public Monster boss(int diff){
+        return new Boss(diff);
+    }
 
-    public void battleStart(Player player, int diff) {
-
-        Monster monster = randMonster(genMonsters(diff));
+    public void battleStart(Player player,Monster monster) {
 
         boolean hasWon;
+        int defTime = 0;
 
+        int startDef = player.getDefense();
         do {
             battleScreen(player, monster);
-            turnInfo.delete(0,turnInfo.length());
+            turnInfo.delete(0, turnInfo.length());
             hasWon = false;
+
             if (player.getHp() <= 0) {
                 turnInfo.append("You are defeated, better luck next time!\n");
                 break;
@@ -60,19 +58,44 @@ public class Battle {
                     }
                 }
                 case "2" -> {
-                    player.defend();
+                    player.setDefense(player.defend());
                     turnInfo.append("You prepare to defend.\n");
-
+                    defTime = 3;
                 }
                 case "3" -> {
                     //add a special attack
                 }
-                case "4" -> player.drinkHealthPot();
-                case "5" -> player.drinkManaPot();
+                case "4" -> {
+                    if (player.getHealthPot() > 0) {
+                        player.drinkHealthPot();
+                        turnInfo.append("You drink a health potion and feel much better!");
+                    } else {
+                        turnInfo.append("You're out of health potions!");
+                    }
+                }
+                case "5" -> {
+                    if (player.getManaPot() > 0) {
+                        player.drinkManaPot();
+                        turnInfo.append("You drink a mana potion and feel more focused!");
+                    } else {
+                        turnInfo.append("You're out of mana potions!");
+                    }
+                }
+
             }
-            player.setHp(player.getHp() - monster.attack());//monster attacks last to make it a bit easier
-            turnInfo.append("Monster attacks for ").append(monster.getDmg()).append(" damage!\n");
+            if (player.getDefense()>=monster.attack()){
+                turnInfo.append("Your mighty defence negates all damage!");
+            } else {
+            player.setHp(player.getHp() - (monster.attack() - player.getDefense()));//monster attacks last to make it a bit easier
+            turnInfo.append("Monster attacks for ").append((monster.attack() - player.getDefense())).append(" damage! ").append(player.getDefense()).append(" blocked!");
+            }
+            defTime--;
+            if (defTime == 0) {
+                player.setDefense(startDef);
+                turnInfo.append("Defense reset to ").append(startDef);
+            }
         } while (!hasWon);
+        player.setDefense(startDef);
     }
 
 
@@ -107,5 +130,6 @@ public class Battle {
         Menu.fightMenu();
 
     }
+
 
 }

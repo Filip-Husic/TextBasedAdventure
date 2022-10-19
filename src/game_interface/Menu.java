@@ -56,7 +56,6 @@ public class Menu {
                     3. Special
                     4. Drink health potion +50% maxHP
                     5. Drink mana potion +40% max mana
-                    6. Flee
                     
                     """);
         }

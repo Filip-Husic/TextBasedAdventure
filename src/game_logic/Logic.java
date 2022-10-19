@@ -22,7 +22,6 @@ public class Logic {
         monsters.add(new Rat(diff));
         monsters.add(new Goblin(diff));
         Battle battle = new Battle();
-        boolean flee;
         boolean hasWon;
 
 
@@ -32,7 +31,6 @@ public class Logic {
             if (firstMap.isNearMonster()) {
                 System.out.println("Fight"); //to do
                 do {
-                    flee = false;
                     hasWon = false;
                     player.setHp(player.getHp()-monsters.get(0).attack());//monster attacks first for more difficulty
                     if (player.getHp() <= 0) {
@@ -45,7 +43,7 @@ public class Logic {
                         case "1" -> {
                             monsters.get(0).setHp(monsters.get(0).getHp()-player.attack());
                             if (monsters.get(0).getHp() <= 0){
-                                System.out.println("You've defeated the: " + monsters.get(0).getClass().getSimpleName());
+                                System.out.println("You've defeated the " + monsters.get(0).getClass().getSimpleName());
                                 monsters.remove(0);
                                 hasWon = true;
                             }else {System.out.println(monsters.get(0).getClass().getSimpleName() + " " + monsters.get(0).getHp() +"HP left");}
@@ -56,10 +54,9 @@ public class Logic {
                         }
                         case "4" -> player.drinkHealthPot();
                         case "5" -> player.drinkManaPot();
-                        case "6" -> flee = true;//flee mechanic
                     }
 
-                }while (!flee || hasWon);//fix this
+                }while (!hasWon);//fix this
             } else if (firstMap.isNearChest()) {
                 chest.randomStatUp(player);
             } else if (firstMap.isNearExit()) {

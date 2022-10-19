@@ -116,8 +116,8 @@ public class Menu {
                 
                 4. Wizard\t 60HP 8dmg 100mana 1defense
                    skills:
-                   Lightning storm (5 mana, 20 attacks 30% hit chance)
-                   Fireball (5 mana, x2 dmg attack 50% chance of 5x dmg)
+                   Lightning storm (10 mana, 20 attacks 30% hit chance)
+                   Fireball (10 mana, x2 dmg attack 50% chance of 5x dmg)
                 """);
 
     }

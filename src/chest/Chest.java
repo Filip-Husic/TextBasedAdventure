@@ -43,7 +43,7 @@ public class Chest {
                 }
             }
         } else {
-            System.out.println("This chest is empty now!");
+            System.out.println("\nThis chest is empty now!");
         }
     }
 }

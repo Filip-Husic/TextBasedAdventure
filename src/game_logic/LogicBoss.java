@@ -4,6 +4,7 @@ import battle.Battle;
 import chest.Chest;
 import map.SecondMap;
 import monster.Boss;
+import monster.Monster;
 import player.Player;
 
 public class LogicBoss {
@@ -12,7 +13,7 @@ public class LogicBoss {
     Chest chest = new Chest();
 
     public void playMap(Player player, double diff) {
-        Boss boss = new Boss(diff);
+        Monster monster = new Boss(diff);
 
         do {
             secondMap.showMap();
@@ -20,11 +21,11 @@ public class LogicBoss {
             if (secondMap.isNearMonster()) {
                 System.out.println("Fight");
                 Battle battle = new Battle();
-                battle.battleStart(player,boss);
+                battle.battleStart(player,monster);
             } else if (secondMap.isNearChest()) {
                 chest.randomStatUp(player);
             }
-        } while(player.getHp()>0 || boss.getHp() > 0);
+        } while(player.getHp()>0 && monster.getHp() > 0);
     }
 
 }

@@ -26,6 +26,6 @@ public class Logic {
             } else if (firstMap.isNearExit()) {
                 logicBoss.playMap(player, diff);
             }
-        } while (player.getHp() > 0 || firstMap.isNearExit());
+        } while (player.getHp() > 0 && !firstMap.isNearExit());
     }
 }

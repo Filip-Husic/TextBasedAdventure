@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class FirstMap implements Map{
 
     private char[][] map = new char[21][26];
-    private char floor = ' ';
+    private final char floor = ' ';
     char player = '\u0D9E'; //ඞ
     char monster1 = '\u0C06'; //ఆ
     char monster2 = '\u0C24'; //త
@@ -102,7 +102,6 @@ public class FirstMap implements Map{
                 System.out.print(z + "  ");
             }
         }
-        System.out.println();
     }
 
     @Override

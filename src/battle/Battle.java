@@ -50,18 +50,23 @@ public class Battle {
         do {
             battleScreen(player, monster);
             turnInfo.delete(0, turnInfo.length());
+            boolean isValidChoice = false;
+
 
             if (player.getHp() <= 0) {
                 System.out.println("You are defeated, better luck next time!");
                 //noinspection BusyWait
                 Thread.sleep(1000);
                 break;
-            }
+            }do {
+
+
             userInput = scanner.nextLine();
             switch (userInput) {
                 case "1" -> {
+                    isValidChoice = true;
                     int playerAttack = player.attack();//player attack
-                    if (monster.getDefense()>=playerAttack){
+                    if (monster.getDefense() >= playerAttack) {
                         turnInfo.append("You do no damage to the monster!\n");
                     } else {
                         monster.setHp(monster.getHp() - (playerAttack - monster.getDefense()));
@@ -69,27 +74,33 @@ public class Battle {
                     }
                 }
                 case "2" -> {
+                    isValidChoice = true;
+
                     player.defend();
                     turnInfo.append("You prepare to defend.\n");
                     defTime = 3;
                 }
                 case "3" -> {
-                    Menu.specialMove(player);
-                    userInput = scanner.nextLine();
-                    if (userInput.equals("1")){//TODO
-                        if (player.getClass().getSimpleName().equals("Archer")){
-                            monster.setHp(monster.getHp() - player.skill1());
-                        }else player.skill1();
+                    if (player.getMana() >= 10) {
+                        isValidChoice = true;
+                        Menu.specialMove(player);
+                        userInput = scanner.nextLine();
+                        if (userInput.equals("1")) {//TODO
+                            if (player.toString().equals("Archer") || player.toString().equals("Wizard")) {
+                                monster.setHp(monster.getHp() - player.skill1());
+                            } else player.skill1();
 
-                    } else if (userInput.equals("2")) {
-                        int skill2 = player.skill2();
-                        monster.setHp(monster.getHp() - skill2);
-                        turnInfo.append("Your skill does ").append(skill2).append(" damage!\n");
-                    }
+
+                        } else if (userInput.equals("2")) {
+                            int skill2 = player.skill2();
+                            monster.setHp(monster.getHp() - skill2);
+                        }
+                    } else System.out.println("You have insufficient mana!");
 
                 }
                 case "4" -> {
                     if (player.getHealthPot() > 0) {
+                        isValidChoice = true;
                         player.drinkHealthPot();
                         turnInfo.append("You drink a health potion and feel much better!\n");
                     } else {
@@ -98,14 +109,16 @@ public class Battle {
                 }
                 case "5" -> {
                     if (player.getManaPot() > 0) {
+                        isValidChoice = true;
                         player.drinkManaPot();
                         turnInfo.append("You drink a mana potion and feel more focused!\n");
                     } else {
                         turnInfo.append("You're out of mana potions!\n");
                     }
                 }
-
             }
+
+            }while (!isValidChoice);
             if (monster.getHp() <= 0) {
                 System.out.printf("You've defeated the %s",monster.getClass().getSimpleName());
                 //noinspection BusyWait

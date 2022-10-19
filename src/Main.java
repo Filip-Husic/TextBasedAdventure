@@ -1,10 +1,7 @@
 import battle.Battle;
 import game_interface.Game;
 import monster.Skeleton;
-import player.Archer;
-import player.Player;
-import player.Rogue;
-import player.Warrior;
+import player.*;
 
 
 public class Main {
@@ -12,7 +9,7 @@ public class Main {
 //        Game game = new Game();
 //        game.intro();
 
-        Player player = new Archer();
+        Player player = new Warrior();
         Skeleton skeleton = new Skeleton(2);
         Battle battle = new Battle();
         battle.battleStart(player,skeleton);

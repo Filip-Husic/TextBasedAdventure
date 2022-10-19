@@ -136,40 +136,57 @@ public class Player implements PlayerInterface {
     }
 
     public int skill1() {//TODO
+        reduceMana(10);
         switch (getClass().getSimpleName()) {
             case "Warrior" -> {
                 rage();
+                Battle.appendTurnInfo("Rage overwhelms you! " + getDmg() + " atk for rest of combat\n");
             }
             case "Rogue" -> {
                 shadowWalk();
+                Battle.appendTurnInfo("You hide in the shadow! Dodge 100% 3 turns\n");
+
             }
             case "Archer" -> {
                 int totalAttack = rainOfArrows();
-                Battle.appendTurnInfo("You send a volley of arrows for " + totalAttack + "dmg!");
+                Battle.appendTurnInfo("You send a volley of arrows for " + totalAttack + "dmg!\n");
                 return totalAttack;
             }
             case "Wizard" -> {
-                return 0;
+                int lightningDmg = lightningStorm();
+                Battle.appendTurnInfo("Ride the lightning for " + lightningDmg + "dmg!\n");
+                return lightningDmg;
             }
         }
         return 0;
     }
 
     public int skill2() {
+        reduceMana(10);
         switch (getClass().getSimpleName()) {
             case "Warrior" -> {
-                Battle.appendTurnInfo("Rage overwhelms you! " + getDmg() + " atk for rest of combat\n");
-                return strongAttack();
+                int strongAttackDmg = strongAttack();
+                if (strongAttackDmg>0){
+                Battle.appendTurnInfo("A fierce attack for " + strongAttackDmg + " damage!\n");
+                }else {
+                    Battle.appendTurnInfo("You attacked too relentlessly and missed!\n");
+                }
+                return strongAttackDmg;
             }
             case "Rogue" -> {
-                Battle.appendTurnInfo("You hide in the shadow! Dodge 100% 3 turns\n");
-                return backStab();
+                int backStabDmg = backStab();
+                Battle.appendTurnInfo("A cunning strike for " + backStabDmg + " damage!");
+                return backStabDmg;
             }
             case "Archer" -> {
-                return arrowToTheKnee();
+                int arrowDmg = arrowToTheKnee();
+                Battle.appendTurnInfo("The monster used to be an adventurer like you,\nuntil you shoot it in the knee for " + arrowDmg + " damage!\n");
+                return arrowDmg;
             }
             case "Wizard" -> {
-                return fireball();
+                int fireballDmg = fireball();
+                Battle.appendTurnInfo("Burn baby, burn for" + fireballDmg + " damage!\n");
+                return fireballDmg;
             }
         }
         return 0;
@@ -196,13 +213,11 @@ public class Player implements PlayerInterface {
     }
     public void rage() {
         setDmg(getDmg()*2);
-//        return "Rage overwhelms you! " + getDmg() + " atk for rest of combat\n";
     }
 
-    public String shadowWalk() {
+    public void shadowWalk() {
         setDefense(999);
         Battle.setDefTime(3);
-        return "You hide in the shadow! Dodge 100% 3 turns\n";
     }
 
     public int rainOfArrows() {
@@ -216,8 +231,20 @@ public class Player implements PlayerInterface {
         return totalAttack;
     }
 
-    public String petrify() {
-
-        return "";
+    public int lightningStorm() {
+        int totalAttack = 0;
+        for (int i = 0; i < 20; i++) {
+            int tempRandom = (int) (Math.random() * 100);
+            if (tempRandom >= 70 ) {
+                totalAttack += attack();
+            }
+        }
+        return totalAttack;
+    }
+    public String toString(){
+        return this.getClass().getSimpleName();
+    }
+    public void reduceMana(int skillCost){
+        this.setMana(this.getMana() - skillCost);
     }
 }

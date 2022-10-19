@@ -1,4 +1,4 @@
-package monsters;
+package monster;
 
 @SuppressWarnings("unused")
 public class Rat extends Monster {

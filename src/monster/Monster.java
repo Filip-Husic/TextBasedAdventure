@@ -1,4 +1,4 @@
-package monsters;
+package monster;
 
 @SuppressWarnings("unused")
 public class Monster implements Monsters{
@@ -66,6 +66,7 @@ public class Monster implements Monsters{
         return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");
     }
 
+    @SuppressWarnings("ConstantConditions")
     public int multiCheck() {
         int tempRandom = (int)(Math.random() * 100);
         if (tempRandom <= 10) {

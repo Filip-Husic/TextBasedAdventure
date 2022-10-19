@@ -1,7 +1,7 @@
 package battle;
 
 import game_interface.Menu;
-import monsters.*;
+import monster.*;
 import player.*;
 
 import java.util.ArrayList;

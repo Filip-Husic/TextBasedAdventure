@@ -3,7 +3,7 @@ package game_logic;
 import battle.Battle;
 import chest.Chest;
 import map.SecondMap;
-import monsters.Boss;
+import monster.Boss;
 import player.Player;
 
 public class LogicBoss {

@@ -1,4 +1,5 @@
 import game_interface.Game;
+import map.SecondMap;
 
 @SuppressWarnings({"unused"})
 public class Main {

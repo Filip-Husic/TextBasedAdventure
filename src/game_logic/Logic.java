@@ -18,7 +18,6 @@ public class Logic {
             firstMap.showMap();
             firstMap.move();
             if (firstMap.isNearMonster()) {// TODO returning to monster position after defeating it starts a new encounter
-                System.out.println("Fight");
                 Battle battle = new Battle();
                 battle.battleStart(player,battle.randMonster(diff));
             } else if (firstMap.isNearChest()) {

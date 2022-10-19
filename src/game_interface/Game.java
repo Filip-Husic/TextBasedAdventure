@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 @SuppressWarnings({"unused"})
 public class Game {
-    Player player;
-    Scanner scanner = new Scanner(System.in);
-    Menu menu = new Menu();
-    String userInput;
-    String tempDiff;
-    boolean isEndGame = false;
-
-    Logic logic = new Logic();
+    private Player player;
+    private Scanner scanner = new Scanner(System.in);
+    private Menu menu = new Menu();
+    private String userInput;
+    private String tempDiff;
+    private boolean isEndGame = false;
+    private double diff = 0.0;
+    private Logic logic = new Logic();
 
 
     public void intro() throws InterruptedException {
@@ -26,11 +26,11 @@ public class Game {
             userInput = scanner.nextLine();
             switch (userInput){
                 case "1" -> startGame();
-                case "0" -> {
+                case "2" -> {
                     System.out.print("Thanks for playing!");
                     isOn = false;
                 }
-                default -> System.out.println("Enter a option from 0-1");
+                default -> System.out.println("Enter a option from 1-2");
             }
         } while (isOn || isEndGame);
 
@@ -43,7 +43,6 @@ public class Game {
         menu.roleChoice();
         playerRoleSet();
         menu.entrance();
-        double diff = 0.0;
         switch (tempDiff){
             case "1" -> diff = 0.5;
             case "2" -> diff = 1;
@@ -61,33 +60,19 @@ public class Game {
             switch (userInput) {
                 case "1" -> {
                     player = new Warrior();
-
-                    System.out.println("An excellent choice, what is your name mighty warrior?");
-                    userInput = scanner.nextLine();
-                    System.out.println("Splendid!" + " Enter the dungeon " + userInput + " and prove your worth!");
+                    menu.askName("warrior");
                 }
                 case "2" -> {
                     player = new Rogue();
-
-                    System.out.println("An excellent choice, what is your name sneaky rogue?");
-                    userInput = scanner.nextLine();
-                    System.out.println("Splendid!" + " Enter the dungeon " + userInput + " and prove your worth!");
+                    menu.askName("rogue");
                 }
-
                 case "3" -> {
                     player = new Archer();
-
-                    System.out.println("An excellent choice, what is your name agile archer?");
-                    userInput = scanner.nextLine();
-                    System.out.println("Splendid!" + " Enter the dungeon " + userInput + " and prove your worth!");
+                    menu.askName("archer");
                 }
-
                 case "4" -> {
                     player = new Wizard();
-
-                    System.out.println("An excellent choice, what is your name wise wizard?");
-                    userInput = scanner.nextLine();
-                    System.out.println("Splendid!" + " Enter the dungeon " + userInput + " and prove your worth!");
+                    menu.askName("wizard");
                 }
                 default -> System.out.println("Please select a valid role from 1-4");
             }

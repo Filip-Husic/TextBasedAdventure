@@ -3,6 +3,8 @@ package game_interface;
 
 import player.Player;
 
+import java.util.Scanner;
+
 @SuppressWarnings("unused")
 public class Menu {
     final String ANSI_RESET = "\u001B[0m";
@@ -39,23 +41,24 @@ public class Menu {
                 "      --           _    _ --   Y   (^)   _ (^)  ===   ----\n" +
                 "          __   -  (^)  (^)      --- Y   (^) Y\n" +
                 "      _            Y    Y                Y             " + ANSI_RESET);
-        System.out.println("Hello adventurer, welcome to the game.\nChoose your fate!");
+        System.out.println("\nHello adventurer, welcome to the game!");
     }
 
     public void mainMenu() {
-        System.out.println("""                
-                1. Start a new adventure
-                0. Exit game
+        System.out.println("""
+                \nChoose your fate!
+                \t1. Start a new adventure
+                \t2. Exit game
                 """);
     }
 
     public void chooseDifficulty() {
         System.out.println("""
-                Choose the difficulty for the game:
-                1. Easy - monsters stats 50% lower
-                2. Medium - monsters stats normal
-                3. Hard - monsters stats 50% higher
-                4. Insane - monsters stats 100% higher
+                \nChoose the difficulty for the game:
+                \t1. Java basic - monsters stats are 50% lower
+                \t2. Java advanced - monsters stats are normal
+                \t3. JavaFX - monsters stats are 50% higher
+                \t4. Console type game - pls don't do it..
                 """);
 
     }
@@ -63,47 +66,46 @@ public class Menu {
     public void roleChoice() {
         System.out.println("""
                 Select a starting role:
-                1. Warrior\t 100HP 10dmg 50mana 5defense
-                   skills:
-                   Rage (10 mana, x2 dmg for rest of combat)
-                   Strong attack (10 mana, x3 dmg 50% hit chance)
+                \t1. Warrior\t ==> 100HP 10dmg 50mana 5defense
+                   \t\tSkills:
+                   \t\t ¤ Rage (10 mana, x2 dmg for rest of combat)
+                   \t\t ¤ Strong attack (10 mana, x3 dmg 50% hit chance)
                 
-                2. Rogue\t 80HP 15dmg 60mana 3defense
-                   skills:
-                   Shadow walk (10 mana, 3 turn dodge 100%)
-                   Backstab (10 mana, x2 dmg attack 100% hit chance)
+                \t2. Rogue\t ==> 80HP 15dmg 60mana 3defense
+                   \t\tSkills:
+                   \t\t ¤ Shadow walk (10 mana, 3 turn dodge 100%)
+                   \t\t ¤ Backstab (10 mana, x2 dmg attack 100% hit chance)
                 
-                3. Archer\t 70HP 12dmg 40mana 2defense
-                   skills:
-                   Rain of arrows (10 mana, 10 attacks 50% hit chance)
-                   Arrow to the knee (10 mana, 2x dmg 100% hit chance)
+                \t3. Archer\t ==> 70HP 12dmg 40mana 2defense
+                   \t\tSkills:
+                   \t\t ¤ Rain of arrows (10 mana, 10 attacks 50% hit chance)
+                   \t\t ¤ Arrow to the knee (10 mana, 2x dmg 100% hit chance)
                 
-                4. Wizard\t 60HP 8dmg 100mana 1defense
-                   skills:
-                   Lightning storm (10 mana, 20 attacks 30% hit chance)
-                   Fireball (10 mana, x2 dmg attack 50% chance of 5x dmg)
+                \t4. Wizard\t ==> 60HP 8dmg 100mana 1defense
+                   \t\tSkills:
+                   \t\t ¤ Lightning storm (10 mana, 20 attacks 30% hit chance)
+                   \t\t ¤ Fireball (10 mana, x2 dmg attack 50% chance of 5x dmg)
                 """);
 
     }
 
     public void entrance () throws InterruptedException {
-        System.out.print("You are entering the dungeon.");
+        System.out.print("You are entering the dungeon");
+        Thread.sleep(1000);
+        System.out.print(".");
         Thread.sleep(1000);
         System.out.print(".");
         Thread.sleep(1000);
         System.out.println(".");
         Thread.sleep(1000);
     }
-    public static void fightMenu () {
-        System.out.println("""
-                    Choose your action:
-                    1. Attack
-                    2. Defend
-                    3. Special
-                    4. Drink health potion +50% maxHP
-                    5. Drink mana potion +40% max mana
-                    
-                    """);
+    public static void fightMenu (Player player) {
+        System.out.println("\nChoose your action: " +
+                "\n1. Attack " +
+                "\n2. Defend " +
+                "\n3. Special attack " +
+                "\n4. Drink health potion +50% maxHP (You have " + player.getHealthPot() + "HP potions)" +
+                "\n5. Drink mana potion +40% max mana (You have " + player.getManaPot() + "MP potions)");
     }
     public static void specialMove(Player player){
         switch (player.getRole()){
@@ -159,5 +161,13 @@ public class Menu {
                     "                                                            d8'      \n" +
                     "                                                           d8'       " + ANSI_RESET);
         }
+    }
+
+    public void askName(String choice) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("An excellent choice, what is your name mighty " + choice + "?");
+        String userInput = sc.nextLine();
+        System.out.println("Splendid!" + " Enter the dungeon " + userInput + " and prove your worth!");
     }
 }

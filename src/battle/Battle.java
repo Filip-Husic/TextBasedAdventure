@@ -55,15 +55,11 @@ public class Battle {
 
             boolean isValidChoice = false;
 
-
             if (player.getHp() <= 0) {
-                System.out.println("You are defeated, better luck next time!");
-                //noinspection BusyWait
-                Thread.sleep(1000);
                 break;
-            }do {
+            }
 
-
+            do {
             userInput = scanner.nextLine();
             switch (userInput) {
                 case "1" -> {
@@ -78,7 +74,6 @@ public class Battle {
                 }
                 case "2" -> {
                     isValidChoice = true;
-
                     player.defend();
                     turnInfo.append("You prepare to defend.\n");
                     battleScreen(player, monster);
@@ -95,9 +90,9 @@ public class Battle {
                         if (userInput.equals("1")) {//TODO
                             if (player.toString().equals("Archer") || player.toString().equals("Wizard")) {
                                 monster.setHp(monster.getHp() - player.skill1());
-                            } else player.skill1();
-
-
+                            } else {
+                                player.skill1();
+                            }
                         } else if (userInput.equals("2")) {
                             int skill2 = player.skill2();
                             monster.setHp(monster.getHp() - skill2);
@@ -107,7 +102,6 @@ public class Battle {
                         battleScreen(player, monster);
                         turnInfo.delete(0, turnInfo.length());
                     }
-
                 }
                 case "4" -> {
                     if (player.getHealthPot() > 0) {
@@ -168,8 +162,7 @@ public class Battle {
 
 
     public void battleScreen(Player player,Monster monster){
-
-
+        System.out.println();
         System.out.printf("""
                 #----#----#----#----#----#----#----#----#----#
                 \t\t\t\t\t\t%s
@@ -190,12 +183,10 @@ public class Battle {
                 //battle-messages
                 turnInfo,
 
-
-
                 //player info
                 (player.getRole() + " " + player.getName()),
                 player.getStats());
-        Menu.fightMenu();
+        Menu.fightMenu(player);
 
     }
 

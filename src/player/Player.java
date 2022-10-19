@@ -1,7 +1,7 @@
 package player;
 
 @SuppressWarnings("unused")
-public class Player implements PlayerInterface{
+public class Player implements PlayerInterface {
     private String name;
     private String role;
     private int hp;
@@ -101,15 +101,16 @@ public class Player implements PlayerInterface{
 
     @Override
     public int defend() {
-        return (this.getDefense()*2);
+        return (this.getDefense() * 2);
     }
 
-    public void drinkHealthPot(){
-        if (this.getHp() < (this.getMaxHP() * 0.5)){
-            this.setHp((int) (this.getHp()+(this.getMaxHP() * 0.5)));
-        }else this.setHp(this.getMaxHP());
-        setHealthPot(getHealthPot()-1);
+    public void drinkHealthPot() {
+        if (this.getHp() < (this.getMaxHP() * 0.5)) {
+            this.setHp((int) (this.getHp() + (this.getMaxHP() * 0.5)));
+        } else this.setHp(this.getMaxHP());
+        setHealthPot(getHealthPot() - 1);
     }
+
     public void drinkManaPot() {
         if (this.getMana() < (this.getMaxMana() * 0.6)) {
             this.setMana((int) (this.getMana() + (this.getMaxMana() * 0.4)));
@@ -117,13 +118,13 @@ public class Player implements PlayerInterface{
         setManaPot(getManaPot() - 1);
     }
 
-    public String getStats(){
-        return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");
+    public String getStats() {
+        return (getMaxHP() + "/" + getHp() + "HP " + getMaxMana() + "/" + getMana() + "MP " + getDefense() + "D");
     }
 
     @SuppressWarnings("ConstantConditions")
     public int multiCheck() {
-        int tempRandom = (int)(Math.random() * 100);
+        int tempRandom = (int) (Math.random() * 100);
         if (tempRandom <= 10) {
             return 2;
         } else if (tempRandom > 10 && tempRandom <= 35) {
@@ -131,16 +132,18 @@ public class Player implements PlayerInterface{
         }
         return 1;
     }
-    public void skill1(){//TODO
-        switch (getClass().getSimpleName()){
+
+    public void skill1() {//TODO
+        switch (getClass().getSimpleName()) {
             case "Warrior" -> rage();
             case "Rogue" -> shadowWalk();
             case "Archer" -> focus();
             case "Wizard" -> petrify();
         }
     }
-    public int skill2(){
-        switch (getClass().getSimpleName()){
+
+    public int skill2() {
+        switch (getClass().getSimpleName()) {
             case "Warrior" -> {
                 return strongAttack();
             }
@@ -156,32 +159,39 @@ public class Player implements PlayerInterface{
         }
         return 0;
     }
-    public void rage(){
 
-    }
-    public int strongAttack(){
-        int tempRandom = (int)(Math.random() * 100);
+    public int strongAttack() {
+        int tempRandom = (int) (Math.random() * 100);
         if (tempRandom <= 50) {
             return 0;
         }
-        return getDmg()*3;
+        return getDmg() * 3;
     }
-    public void shadowWalk(){
+
+    public int backStab() {
+        return getDmg() * 2;
+    }
+
+    public int arrowToTheKnee() {
+        return getDmg() * 3;
+    }
+
+    public int fireball() {
+        return getDmg() * 2;
+    }
+    public void rage() {
 
     }
-    public int backStab(){
-        return getDmg()*2;
-    }
-    public void focus(){
+
+    public void shadowWalk() {
 
     }
-    public int arrowToTheKnee(){
-        return getDmg()*3;
-    }
-    public void petrify(){
+
+    public void focus() {
 
     }
-    public int fireball(){
-        return getDmg()*2;
+
+    public void petrify() {
+
     }
 }

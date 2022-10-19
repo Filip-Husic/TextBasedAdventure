@@ -1,6 +1,6 @@
 package map;
 
-public class SecondFloor{
+public class SecondMap{
 
     char[][] map = new char[20][25];
 }

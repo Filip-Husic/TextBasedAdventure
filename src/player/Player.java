@@ -124,11 +124,6 @@ public class Player implements PlayerInterface{
         System.out.println("You drink a mana potion and feel more focused!");
     }
 
-    @Override
-    public void flee() {//return to map, regen monsterHP to full, player keeps damage
-
-    }
-
     public String getStats(){
         return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");
     }

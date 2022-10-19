@@ -7,7 +7,4 @@ public interface PlayerInterface {
     int attack();
     int defend();
     int specialMove();
-    void flee();
-
-
 }

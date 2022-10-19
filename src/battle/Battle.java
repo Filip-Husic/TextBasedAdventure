@@ -64,9 +64,8 @@ public class Battle {
                     turnInfo.append("You prepare to defend.\n");
                     defTime = 3;
                 }
-                case "3" -> {
-                    //add a special attack
-                }
+                case "3" -> //add a special attack
+                        Menu.specialMove(player);
                 case "4" -> {
                     if (player.getHealthPot() > 0) {
                         player.drinkHealthPot();

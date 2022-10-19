@@ -11,6 +11,12 @@ public class Warrior extends Player {
         this.setMaxMana(50);
         this.setDefense(5);
     }
+    public void rage(){
+
+    }
+    public void strongAttack(){
+
+    }
 }
 
 

@@ -11,4 +11,10 @@ public class Archer extends Player{
         this.setMaxMana(40);
         this.setDefense(2);
     }
+    public void focus(){
+
+    }
+    public void arrowToTheKnee(){
+
+    }
 }

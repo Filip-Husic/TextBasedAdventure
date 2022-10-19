@@ -99,10 +99,25 @@ public class Menu {
     public void roleChoice() {
         System.out.println("""
                 Select a starting role:
-                1. Warrior\t 100HP 10dmg 50mana 5defense skill: rage (10 mana x2 dmg 3 turns)
-                2. Rogue\t 80HP 15dmg 60mana 3defense skill: backstab(10 mana x2 dmg attack)
-                3. Archer\t 70HP 12dmg 40mana 2defense skill: incapacitate(10 mana stun 2 turns)
-                4. Wizard\t 60HP 8dmg 100mana 1defense skill: fireball(10 mana x2 dmg attack, 2 turns x1 damage on start of turn)
+                1. Warrior\t 100HP 10dmg 50mana 5defense
+                   skills:
+                   Rage (10 mana x2 dmg 3 turns)
+                   Strong attack (10 mana x2 dmg 50% hit chance)
+                
+                2. Rogue\t 80HP 15dmg 60mana 3defense
+                   skills:
+                   Shadow walk (10 mana 3 turn dodge 100%)
+                   Backstab (10 mana x2 dmg attack 100% hit chance)
+                
+                3. Archer\t 70HP 12dmg 40mana 2defense
+                   skills:
+                   Focus (10 mana 3 turn 100% hit chance)
+                   Arrow to the knee (10 mana stun 3 turns)
+                
+                4. Wizard\t 60HP 8dmg 100mana 1defense
+                   skills:
+                   Petrify (5 mana stun 3 turns)
+                   Fireball (5 mana x2 dmg attack, 2 turns x1 damage on start of turn)
                 """);
 
     }
@@ -125,6 +140,28 @@ public class Menu {
                     5. Drink mana potion +40% max mana
                     
                     """);
+    }
+    public static void specialMove(Player player){
+        switch (player.getRole()){
+            case "Warrior" -> System.out.println("""
+            1. Rage (10 mana x2 dmg 3 turns)
+            2. Strong attack (10 mana x2 dmg 50% hit chance)
+            """);
+            case "Rogue" -> System.out.println("""
+            1. Shadow walk (10 mana 3 turn dodge 100%)
+            2. Backstab (10 mana x2 dmg attack 100% hit chance)
+            """);
+            case "Archer" -> System.out.println("""
+            1. Focus (10 mana 3 turn 100% hit chance)
+            2. Arrow to the knee (10 mana stun 3 turns)
+            """);
+            case "Wizard" -> System.out.println("""
+            1. Petrify (5 mana stun 3 turns)
+            2. Fireball (5 mana x2 dmg attack, 2 turns x1 damage on start of turn)
+            """);
+        }
+
+
     }
 
     public void endGame (Player player) {

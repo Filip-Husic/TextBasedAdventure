@@ -10,12 +10,9 @@ public class Player implements PlayerInterface{
     private int defense;
     private int healthPot = 2;
     private int manaPot = 2;
-    private int maxHealth;
+    private int maxHP;
     private int maxMana;
 
-    public Player() {
-        int maxHP = hp;
-    }
 
     public String getName() {
         return name;
@@ -41,12 +38,12 @@ public class Player implements PlayerInterface{
         this.hp = hp;
     }
 
-    public int getMaxHealth() {
-        return maxHealth;
+    public int getMaxHP() {
+        return maxHP;
     }
 
-    public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
     }
 
     public int getDmg() {
@@ -115,9 +112,9 @@ public class Player implements PlayerInterface{
     }
 
     public void drinkHealthPot(){
-        if (this.getHp() < (this.maxHealth * 0.5)){
-            this.setHp(this.getHp()+this.maxHealth /2);
-        }else this.setHp(this.maxHealth);
+        if (this.getHp() < (this.maxHP * 0.5)){
+            this.setHp(this.getHp()+this.maxHP /2);
+        }else this.setHp(this.maxHP);
         System.out.println("You drink a health potion and feel much better!");
     }
     public void drinkManaPot(){
@@ -133,6 +130,6 @@ public class Player implements PlayerInterface{
     }
 
     public String getStats(){
-        return (getHp()+"HP/"+getMana()+"MP/"+getDefense()+"D");
+        return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");
     }
 }

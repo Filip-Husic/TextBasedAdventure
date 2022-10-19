@@ -1,6 +1,8 @@
 package game_interface;
 
 
+import player.Player;
+
 @SuppressWarnings("unused")
 public class Menu {
 
@@ -19,9 +21,10 @@ public class Menu {
     public void chooseDifficulty() {
         System.out.println("""
                 Choose the difficulty for the game:
-                1. Easy - monsters do 50% less damage
-                2. Medium - monsters do normal damage
-                3. Hard - monsters do 50% more damage
+                1. Easy - monsters stats 50% lower
+                2. Medium - monsters stats normal
+                3. Hard - monsters stats 50% higher
+                4. Insane - monsters stats 100% higher
                 """);
 
     }
@@ -58,10 +61,11 @@ public class Menu {
                     """);
         }
 
-        public void endGame () {
-            //add a check if boss defeated
-            System.out.println("Congratulation, you've won the game!");//if won
-            //add a check in combat if HP<=0
-            System.out.println("You lose, better luck next time!");//if lost
-        }
+        public void endGame (Player player) {
+            if (player.getHp() <= 0) {
+                System.out.println("You lose, better luck next time!");//if lost
+            }//else if(boss.defeated){
+            //System.out.println("Congratulation, you've won the game!");//if won
+            //}
+             }
     }

@@ -1,13 +1,11 @@
 package game_interface;
 
 import game_logic.Logic;
-import map.FirstMap;
-import monsters.*;
 import player.*;
 
 import java.util.Scanner;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "CommentedOutCode"})
 public class Game {
     Player player;
     Scanner scanner = new Scanner(System.in);
@@ -37,12 +35,12 @@ public class Game {
         menu.chooseDifficulty();
         do {
             tempDiff = scanner.nextLine();
-        } while (!(tempDiff.equals("1") || tempDiff.equals("2") || tempDiff.equals("3")));
+        } while (!(tempDiff.equals("1") || tempDiff.equals("2") || tempDiff.equals("3") || tempDiff.equals("4")));
         menu.roleChoice();
         playerRoleSet();
         menu.entrance();
         logic.playMap(player, Integer.parseInt(tempDiff));
-        menu.endGame();
+        menu.endGame(player);
     }
 
    /* public void createMonsters(double diff){

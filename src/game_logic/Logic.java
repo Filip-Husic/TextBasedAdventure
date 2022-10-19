@@ -22,22 +22,33 @@ public class Logic {
         monsters.add(new Rat(diff));
         monsters.add(new Goblin(diff));
         Battle battle = new Battle();
+        boolean flee;
+        boolean hasWon;
 
 
         do {
-            //skipping map goes right to battle screen for time saving :D
-//            firstMap.showMap();
-//            firstMap.move();
-//            if (firstMap.isNearMonster()) {
+            firstMap.showMap();
+            firstMap.move();
+            if (firstMap.isNearMonster()) {
                 System.out.println("Fight"); //to do
                 do {
+                    flee = false;
+                    hasWon = false;
                     player.setHp(player.getHp()-monsters.get(0).attack());//monster attacks first for more difficulty
+                    if (player.getHp() <= 0) {
+                        System.out.println("You are defeated, better luck next time!");
+                        break;
+                    }
                     battle.battleScreen(player,monsters.get(0));
                     userInput = scanner.nextLine();
                     switch (userInput){
                         case "1" -> {
                             monsters.get(0).setHp(monsters.get(0).getHp()-player.attack());
-                            System.out.println(monsters.get(0).getHp() +"HP left");
+                            if (monsters.get(0).getHp() <= 0){
+                                System.out.println("You've defeated the: " + monsters.get(0).getClass().getSimpleName());
+                                monsters.remove(0);
+                                hasWon = true;
+                            }else {System.out.println(monsters.get(0).getClass().getSimpleName() + " " + monsters.get(0).getHp() +"HP left");}
                         }
                         case "2" -> player.defend();
                         case "3" ->{
@@ -45,23 +56,15 @@ public class Logic {
                         }
                         case "4" -> player.drinkHealthPot();
                         case "5" -> player.drinkManaPot();
-                        case "6" ->{
-                            //add flee mechanic
-                        }
-                    }
-                    if (monsters.get(0).getHp() <= 0){
-                        System.out.println("You've defeated the: " + monsters.get(0).getClass().getSimpleName());
-                    } else if (player.getHp() <= 0) {
-                        System.out.println("You are defeated, better luck next time!");
+                        case "6" -> flee = true;//flee mechanic
                     }
 
-                }while (monsters.get(0).getHp() > 0 && player.getHp() > 0);
-                monsters.remove(0);
-//            } else if (firstMap.isNearChest()) {
-//                chest.randomStatUp(player);
-//            } else if (firstMap.isNearExit()) {
-//                System.out.println("Exit"); //to do
-//            }
-        } while (player.getHp() >= 0 || firstMap.isNearExit());
+                }while (!flee || hasWon);//fix this
+            } else if (firstMap.isNearChest()) {
+                chest.randomStatUp(player);
+            } else if (firstMap.isNearExit()) {
+                System.out.println("Exit"); //to do
+            }
+        } while (player.getHp() > 0 || firstMap.isNearExit());
     }
 }

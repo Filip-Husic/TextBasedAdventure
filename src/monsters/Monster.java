@@ -7,8 +7,8 @@ public class Monster implements Monsters{
     private int dmg;
     private int mana;
     private int defense;
-
-
+    private int maxHP;
+    private int maxMana;
 
     public int getHp() {
         return hp;
@@ -16,6 +16,14 @@ public class Monster implements Monsters{
 
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
     }
 
     public int getDmg() {
@@ -42,13 +50,21 @@ public class Monster implements Monsters{
         this.mana = mana;
     }
 
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+    }
+
     @Override
     public int attack() {
         System.out.printf("Monster attacks for %d damage!\n", this.getDmg());
         return this.getDmg();
     }
     public String getStats(){
-        return (getHp()+"HP/"+getMana()+"MP/"+getDefense()+"D");
+        return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");
     }
 
 }

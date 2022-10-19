@@ -5,7 +5,7 @@ import player.*;
 
 import java.util.Scanner;
 
-@SuppressWarnings({"unused", "CommentedOutCode"})
+@SuppressWarnings({"unused"})
 public class Game {
     Player player;
     Scanner scanner = new Scanner(System.in);
@@ -39,17 +39,16 @@ public class Game {
         menu.roleChoice();
         playerRoleSet();
         menu.entrance();
-        logic.playMap(player, Integer.parseInt(tempDiff));
+        double diff = 0.0;
+        switch (tempDiff){
+            case "1" -> diff = 0.5;
+            case "2" -> diff = 1;
+            case "3" -> diff = 1.5;
+            case "4" -> diff = 2;
+        }
+        logic.playMap(player, diff);
         menu.endGame(player);
     }
-
-   /* public void createMonsters(double diff){
-        bat = new Bat(diff);
-        boss = new Boss(diff);
-        goblin = new Goblin(diff);
-        rat = new Rat(diff);
-        skeleton = new Skeleton(diff);
-    }*/
 
     public void playerRoleSet(){
         userInput = scanner.nextLine();

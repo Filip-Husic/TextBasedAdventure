@@ -12,7 +12,7 @@ public class Logic {
     Chest chest = new Chest();
     LogicBoss logicBoss = new LogicBoss();
 
-    public void playMap(Player player, int diff) {
+    public void playMap(Player player, double diff) {
 
         do {
             firstMap.showMap();

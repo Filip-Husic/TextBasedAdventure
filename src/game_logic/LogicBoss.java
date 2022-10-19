@@ -11,7 +11,7 @@ public class LogicBoss {
     SecondMap secondMap = new SecondMap();
     Chest chest = new Chest();
 
-    public void playMap(Player player, int diff) {
+    public void playMap(Player player, double diff) {
         Boss boss = new Boss(diff);
 
         do {
@@ -20,7 +20,7 @@ public class LogicBoss {
             if (secondMap.isNearMonster()) {
                 System.out.println("Fight");
                 Battle battle = new Battle();
-                battle.battleStart(player,battle.boss(diff));//to do
+                battle.battleStart(player,boss);
             } else if (secondMap.isNearChest()) {
                 chest.randomStatUp(player);
             }

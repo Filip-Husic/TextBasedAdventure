@@ -17,7 +17,7 @@ public class Battle {
     StringBuilder turnInfo = new StringBuilder();
 
 
-    public Monster randMonster(int diff){
+    public Monster randMonster(double diff){
         ArrayList<Monster> monsters = new ArrayList<>();
         monsters.add(new Bat(diff));
         monsters.add(new Rat(diff));
@@ -25,9 +25,6 @@ public class Battle {
         monsters.add(new Skeleton(diff));
         int random = new Random().nextInt(monsters.size());
         return monsters.get(random);
-    }
-    public Monster boss(int diff){
-        return new Boss(diff);
     }
 
     public void battleStart(Player player,Monster monster) {
@@ -48,8 +45,12 @@ public class Battle {
             userInput = scanner.nextLine();
             switch (userInput) {
                 case "1" -> {
-                    monster.setHp(monster.getHp() - player.attack());//player attack
-                    turnInfo.append("You attack for ").append(player.getDmg()).append(" damage!\n");
+                    if (monster.getDefense()>=player.attack()){
+                        turnInfo.append("You do no damage to the monster, it's defense is too strong!");
+                    } else {
+                        monster.setHp(monster.getHp() - (player.attack() - monster.getDefense()));//player attack
+                        turnInfo.append("You attack for ").append(player.getDmg()).append(" damage!\n");
+                    }
                     if (monster.getHp() <= 0) {
                         turnInfo.append("You've defeated the ").append(monster.getClass().getSimpleName());
                         hasWon = true;

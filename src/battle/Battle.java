@@ -47,9 +47,12 @@ public class Battle {
         int startDef = player.getDefense();
         int startDmg = player.getDmg();
 
+        turnInfo.append("\t\t\t  !!BATTLE START!!");
+
         do {
             battleScreen(player, monster);
             turnInfo.delete(0, turnInfo.length());
+
             boolean isValidChoice = false;
 
 
@@ -78,6 +81,10 @@ public class Battle {
 
                     player.defend();
                     turnInfo.append("You prepare to defend.\n");
+                    battleScreen(player, monster);
+                    //noinspection BusyWait
+                    Thread.sleep(2000);
+                    turnInfo.delete(0, turnInfo.length());
                     defTime = 3;
                 }
                 case "3" -> {
@@ -95,38 +102,47 @@ public class Battle {
                             int skill2 = player.skill2();
                             monster.setHp(monster.getHp() - skill2);
                         }
-                    } else System.out.println("You have insufficient mana!");
+                    } else {
+                        turnInfo.append("You have insufficient mana!");
+                        battleScreen(player, monster);
+                        turnInfo.delete(0, turnInfo.length());
+                    }
 
                 }
                 case "4" -> {
                     if (player.getHealthPot() > 0) {
-                        isValidChoice = true;
                         player.drinkHealthPot();
                         turnInfo.append("You drink a health potion and feel much better!\n");
                     } else {
                         turnInfo.append("You're out of health potions!\n");
                     }
+                    battleScreen(player, monster);
+                    turnInfo.delete(0, turnInfo.length());
                 }
                 case "5" -> {
                     if (player.getManaPot() > 0) {
-                        isValidChoice = true;
                         player.drinkManaPot();
                         turnInfo.append("You drink a mana potion and feel more focused!\n");
                     } else {
                         turnInfo.append("You're out of mana potions!\n");
                     }
+                    battleScreen(player, monster);
+                    turnInfo.delete(0, turnInfo.length());
                 }
             }
 
             }while (!isValidChoice);
             if (monster.getHp() <= 0) {
-                System.out.printf("You've defeated the %s",monster.getClass().getSimpleName());
+                //noinspection UnnecessaryToStringCall
+                System.out.printf("You've defeated the %s",monster.toString());
                 //noinspection BusyWait
                 Thread.sleep(1000);
                 break;
             } else {
-                turnInfo.append(monster.getClass().getSimpleName()).append(" ").append(monster.getHp()).append("HP left\n");
+                //noinspection UnnecessaryToStringCall
+                turnInfo.append(monster.toString()).append(" ").append(monster.getHp()).append("HP left\n");
             }
+
             int monsterAttack = monster.attack();
             if (player.getDefense()>=monsterAttack){
                 turnInfo.append("Your take no damage!\n");
@@ -144,6 +160,7 @@ public class Battle {
             }
             }
         } while (true);
+        turnInfo.delete(0, turnInfo.length());
         player.setDefense(startDef);
         player.setDmg(startDmg);
     }
@@ -154,16 +171,17 @@ public class Battle {
 
 
         System.out.printf("""
-                #-----------------------------#
-                \t\t\t\t%s
-                \t\t\t\t\u0C06 %s
+                #----#----#----#----#----#----#----#----#----#
+                \t\t\t\t\t\t%s
+                \t\t\t\t\t\t\u0C06 %s
                 
                 
                 %s
                 
+                
                   %s
                   \u0D9E %s
-                #-----------------------------#
+                #----#----#----#----#----#----#----#----#----#
                 """,
                 //monster info
                 monster.getClass().getSimpleName(),
@@ -175,7 +193,7 @@ public class Battle {
 
 
                 //player info
-                player.getRole(),
+                (player.getRole() + " " + player.getName()),
                 player.getStats());
         Menu.fightMenu();
 

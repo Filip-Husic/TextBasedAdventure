@@ -19,15 +19,20 @@ public class Game {
 
     public void intro() throws InterruptedException {
         menu.welcomeText();
+        boolean isOn = true;
+
         do {
             menu.mainMenu();
             userInput = scanner.nextLine();
             switch (userInput){
                 case "1" -> startGame();
-                case "0" -> System.out.print("");
+                case "0" -> {
+                    System.out.print("Thanks for playing!");
+                    isOn = false;
+                }
                 default -> System.out.println("Enter a option from 0-1");
             }
-        } while (!userInput.equals("0") || isEndGame);
+        } while (isOn || isEndGame);
 
     }
     public void startGame() throws InterruptedException {
@@ -86,6 +91,7 @@ public class Game {
                 }
                 default -> System.out.println("Please select a valid role from 1-4");
             }
+            player.setName(userInput);
         } while (player == null);
     }
 }

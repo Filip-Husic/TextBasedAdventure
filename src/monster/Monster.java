@@ -76,5 +76,8 @@ public class Monster implements Monsters{
         }
         return 1;
     }
+    public String toString(){
+        return this.getClass().getSimpleName();
+    }
 
 }

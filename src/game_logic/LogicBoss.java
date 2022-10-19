@@ -13,7 +13,7 @@ public class LogicBoss {
     Chest chest = new Chest();
 
     public void playMap(Player player, double diff) throws InterruptedException {
-        Monster monster = new Boss(diff);
+        Monster boss = new Boss(diff);
 
         do {
             secondMap.showMap();
@@ -21,11 +21,11 @@ public class LogicBoss {
             if (secondMap.isNearMonster()) {
                 System.out.println("Fight");
                 Battle battle = new Battle();
-                battle.battleStart(player,monster);
+                battle.battleStart(player,boss);
             } else if (secondMap.isNearChest()) {
                 chest.randomStatUp(player);
             }
-        } while(player.getHp()>0 && monster.getHp() > 0);
+        } while(player.getHp()>0 && boss.getHp() > 0);
     }
 
 }

@@ -60,7 +60,6 @@ public class Monster implements Monsters{
 
     @Override
     public int attack() {
-        System.out.printf("Monster attacks for %d damage!\n", this.getDmg());
         return this.getDmg();
     }
     public String getStats(){

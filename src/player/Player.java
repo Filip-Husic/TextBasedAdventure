@@ -96,13 +96,11 @@ public class Player implements PlayerInterface{
 
     @Override
     public int attack() {
-        System.out.printf("You attack for %d damage!\n", this.getDmg());
         return this.getDmg();
     }
 
     @Override
     public int defend() {
-        System.out.println("You prepare to defend.");
         return (this.defense*2);//add a temp raised def variable to player
     }
 

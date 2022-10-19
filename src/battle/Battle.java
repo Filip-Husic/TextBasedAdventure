@@ -45,11 +45,12 @@ public class Battle {
             userInput = scanner.nextLine();
             switch (userInput) {
                 case "1" -> {
-                    if (monster.getDefense()>=player.attack()){
+                    int playerAttack = player.attack();//player attack
+                    if (monster.getDefense()>=playerAttack){
                         turnInfo.append("You do no damage to the monster, it's defense is too strong!");
                     } else {
-                        monster.setHp(monster.getHp() - (player.attack() - monster.getDefense()));//player attack
-                        turnInfo.append("You attack for ").append(player.getDmg()).append(" damage!\n");
+                        monster.setHp(monster.getHp() - (playerAttack - monster.getDefense()));
+                        turnInfo.append("You attack for ").append(playerAttack).append(" damage! ").append(monster.getDefense()).append(" blocked!\n");
                     }
                     if (monster.getHp() <= 0) {
                         turnInfo.append("You've defeated the ").append(monster.getClass().getSimpleName());
@@ -84,11 +85,12 @@ public class Battle {
                 }
 
             }
-            if (player.getDefense()>=monster.attack()){
+            int monsterAttack = monster.attack();
+            if (player.getDefense()>=monsterAttack){
                 turnInfo.append("Your mighty defence negates all damage!");
             } else {
-            player.setHp(player.getHp() - (monster.attack() - player.getDefense()));//monster attacks last to make it a bit easier
-            turnInfo.append("Monster attacks for ").append((monster.attack() - player.getDefense())).append(" damage! ").append(player.getDefense()).append(" blocked!");
+            player.setHp(player.getHp() - (monsterAttack - player.getDefense()));//monster attacks last to make it a bit easier
+            turnInfo.append("Monster attacks for ").append((monsterAttack - player.getDefense())).append(" damage! ").append(player.getDefense()).append(" blocked!");
             }
             defTime--;
             if (defTime == 0) {

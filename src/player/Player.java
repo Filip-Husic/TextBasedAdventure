@@ -13,6 +13,8 @@ public class Player implements PlayerInterface{
     private int maxHP;
     private int maxMana;
 
+    private String specialMove;
+
 
     public String getName() {
         return name;
@@ -101,7 +103,7 @@ public class Player implements PlayerInterface{
 
     @Override
     public int defend() {
-        return (this.getDefense()*2);//add a temp raised def variable to player
+        return (this.getDefense()*2);
     }
 
     @Override
@@ -126,6 +128,7 @@ public class Player implements PlayerInterface{
         return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");
     }
 
+    @SuppressWarnings("ConstantConditions")
     public int multiCheck() {
         int tempRandom = (int)(Math.random() * 100);
         if (tempRandom <= 10) {

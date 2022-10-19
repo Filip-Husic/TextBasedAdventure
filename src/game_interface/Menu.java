@@ -101,7 +101,7 @@ public class Menu {
                 Select a starting role:
                 1. Warrior\t 100HP 10dmg 50mana 5defense
                    skills:
-                   Rage (10 mana x2 dmg 3 turns)
+                   Rage (10 mana x2 dmg for rest of combat)
                    Strong attack (10 mana x3 dmg 50% hit chance)
                 
                 2. Rogue\t 80HP 15dmg 60mana 3defense
@@ -111,8 +111,8 @@ public class Menu {
                 
                 3. Archer\t 70HP 12dmg 40mana 2defense
                    skills:
-                   Focus (10 mana 3 turn 100% hit chance)
-                   Arrow to the knee (10 mana 3x dmg 100% hit chance)
+                   Rain of arrows (10 mana 10 attacks 50% hit chance)
+                   Arrow to the knee (10 mana 2x dmg 100% hit chance)
                 
                 4. Wizard\t 60HP 8dmg 100mana 1defense
                    skills:
@@ -144,7 +144,7 @@ public class Menu {
     public static void specialMove(Player player){
         switch (player.getRole()){
             case "Warrior" -> System.out.println("""
-            1. Rage (10 mana x2 dmg 3 turns)
+            1. Rage (10 mana x2 dmg for rest of combat)
             2. Strong attack (10 mana x2 dmg 50% hit chance)
             """);
             case "Rogue" -> System.out.println("""
@@ -152,7 +152,7 @@ public class Menu {
             2. Backstab (10 mana x2 dmg attack 100% hit chance)
             """);
             case "Archer" -> System.out.println("""
-            1. Focus (10 mana 3 turn 100% hit chance)
+            1. Rain of arrows (10 mana 10 attacks 50% hit chance)
             2. Arrow to the knee (10 mana 3x dmg 100% hit chance)
             """);
             case "Wizard" -> System.out.println("""

@@ -1,5 +1,7 @@
 package player;
 
+import battle.Battle;
+
 @SuppressWarnings("unused")
 public class Player implements PlayerInterface {
     private String name;
@@ -100,8 +102,8 @@ public class Player implements PlayerInterface {
     }
 
     @Override
-    public int defend() {
-        return (this.getDefense() * 2);
+    public void defend() {
+        setDefense (getDefense() * 2);
     }
 
     public void drinkHealthPot() {
@@ -133,21 +135,34 @@ public class Player implements PlayerInterface {
         return 1;
     }
 
-    public void skill1() {//TODO
+    public int skill1() {//TODO
         switch (getClass().getSimpleName()) {
-            case "Warrior" -> rage();
-            case "Rogue" -> shadowWalk();
-            case "Archer" -> focus();
-            case "Wizard" -> petrify();
+            case "Warrior" -> {
+                rage();
+            }
+            case "Rogue" -> {
+                shadowWalk();
+            }
+            case "Archer" -> {
+                int totalAttack = rainOfArrows();
+                Battle.appendTurnInfo("You send a volley of arrows for " + totalAttack + "dmg!");
+                return totalAttack;
+            }
+            case "Wizard" -> {
+                return 0;
+            }
         }
+        return 0;
     }
 
     public int skill2() {
         switch (getClass().getSimpleName()) {
             case "Warrior" -> {
+                Battle.appendTurnInfo("Rage overwhelms you! " + getDmg() + " atk for rest of combat\n");
                 return strongAttack();
             }
             case "Rogue" -> {
+                Battle.appendTurnInfo("You hide in the shadow! Dodge 100% 3 turns\n");
                 return backStab();
             }
             case "Archer" -> {
@@ -180,18 +195,29 @@ public class Player implements PlayerInterface {
         return getDmg() * 2;
     }
     public void rage() {
-
+        setDmg(getDmg()*2);
+//        return "Rage overwhelms you! " + getDmg() + " atk for rest of combat\n";
     }
 
-    public void shadowWalk() {
-
+    public String shadowWalk() {
+        setDefense(999);
+        Battle.setDefTime(3);
+        return "You hide in the shadow! Dodge 100% 3 turns\n";
     }
 
-    public void focus() {
-
+    public int rainOfArrows() {
+        int totalAttack = 0;
+        for (int i = 0; i < 10; i++) {
+            int tempRandom = (int) (Math.random() * 100);
+            if (tempRandom >= 50) {
+                totalAttack += attack();
+            }
+        }
+        return totalAttack;
     }
 
-    public void petrify() {
+    public String petrify() {
 
+        return "";
     }
 }

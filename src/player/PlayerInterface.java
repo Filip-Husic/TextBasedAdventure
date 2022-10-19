@@ -5,5 +5,5 @@ public interface PlayerInterface {
 
 
     int attack();
-    int defend();
+    void defend();
 }

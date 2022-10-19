@@ -25,9 +25,10 @@ public class Logic {
 
 
         do {
-            firstMap.showMap();
-            firstMap.move();
-            if (firstMap.isNearMonster()) {
+            //skipping map goes right to battle screen for time saving :D
+//            firstMap.showMap();
+//            firstMap.move();
+//            if (firstMap.isNearMonster()) {
                 System.out.println("Fight"); //to do
                 do {
                     player.setHp(player.getHp()-monsters.get(0).attack());//monster attacks first for more difficulty
@@ -56,11 +57,11 @@ public class Logic {
 
                 }while (monsters.get(0).getHp() > 0 && player.getHp() > 0);
                 monsters.remove(0);
-            } else if (firstMap.isNearChest()) {
-                chest.randomStatUp(player);
-            } else if (firstMap.isNearExit()) {
-                System.out.println("Exit"); //to do
-            }
-        } while (player.getHp() > 0 || firstMap.isNearExit());
+//            } else if (firstMap.isNearChest()) {
+//                chest.randomStatUp(player);
+//            } else if (firstMap.isNearExit()) {
+//                System.out.println("Exit"); //to do
+//            }
+        } while (player.getHp() >= 0 || firstMap.isNearExit());
     }
 }

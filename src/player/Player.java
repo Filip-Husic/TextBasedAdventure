@@ -13,8 +13,6 @@ public class Player implements PlayerInterface{
     private int maxHP;
     private int maxMana;
 
-    private String specialMove;
-
 
     public String getName() {
         return name;
@@ -106,11 +104,6 @@ public class Player implements PlayerInterface{
         return (this.getDefense()*2);
     }
 
-    @Override
-    public int specialMove() {//add some special moves depending on class
-        return 0;
-    }
-
     public void drinkHealthPot(){
         if (this.getHp() < (this.getMaxHP() * 0.5)){
             this.setHp((int) (this.getHp()+(this.getMaxHP() * 0.5)));
@@ -137,5 +130,58 @@ public class Player implements PlayerInterface{
             return 0;
         }
         return 1;
+    }
+    public void skill1(){//TODO
+        switch (getClass().getSimpleName()){
+            case "Warrior" -> rage();
+            case "Rogue" -> shadowWalk();
+            case "Archer" -> focus();
+            case "Wizard" -> petrify();
+        }
+    }
+    public int skill2(){
+        switch (getClass().getSimpleName()){
+            case "Warrior" -> {
+                return strongAttack();
+            }
+            case "Rogue" -> {
+                return backStab();
+            }
+            case "Archer" -> {
+                return arrowToTheKnee();
+            }
+            case "Wizard" -> {
+                return fireball();
+            }
+        }
+        return 0;
+    }
+    public void rage(){
+
+    }
+    public int strongAttack(){
+        int tempRandom = (int)(Math.random() * 100);
+        if (tempRandom <= 50) {
+            return 0;
+        }
+        return getDmg()*3;
+    }
+    public void shadowWalk(){
+
+    }
+    public int backStab(){
+        return getDmg()*2;
+    }
+    public void focus(){
+
+    }
+    public int arrowToTheKnee(){
+        return getDmg()*3;
+    }
+    public void petrify(){
+
+    }
+    public int fireball(){
+        return getDmg()*2;
     }
 }

@@ -11,10 +11,5 @@ public class Rogue extends Player{
         this.setMaxMana(60);
         this.setDefense(3);
     }
-    public void shadowWalk(){
 
-    }
-    public void backStab(){
-
-    }
 }

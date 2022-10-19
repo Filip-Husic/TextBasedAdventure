@@ -11,10 +11,5 @@ public class Wizard extends Player {
         this.setMaxMana(100);
         this.setDefense(1);
     }
-    public void petrify(){
 
-    }
-    public void fireball(){
-
-    }
 }

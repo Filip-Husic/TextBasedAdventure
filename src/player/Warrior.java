@@ -1,6 +1,6 @@
 package player;
 
-@SuppressWarnings("unused")
+
 public class Warrior extends Player {
     public Warrior() {
         this.setRole("Warrior");
@@ -11,12 +11,7 @@ public class Warrior extends Player {
         this.setMaxMana(50);
         this.setDefense(5);
     }
-    public void rage(){
 
-    }
-    public void strongAttack(){
-
-    }
 }
 
 

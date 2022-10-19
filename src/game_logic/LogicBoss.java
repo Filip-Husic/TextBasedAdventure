@@ -12,7 +12,7 @@ public class LogicBoss {
     SecondMap secondMap = new SecondMap();
     Chest chest = new Chest();
 
-    public void playMap(Player player, double diff) {
+    public void playMap(Player player, double diff) throws InterruptedException {
         Monster monster = new Boss(diff);
 
         do {

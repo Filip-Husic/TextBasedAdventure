@@ -102,7 +102,7 @@ public class Menu {
                 1. Warrior\t 100HP 10dmg 50mana 5defense
                    skills:
                    Rage (10 mana x2 dmg 3 turns)
-                   Strong attack (10 mana x2 dmg 50% hit chance)
+                   Strong attack (10 mana x3 dmg 50% hit chance)
                 
                 2. Rogue\t 80HP 15dmg 60mana 3defense
                    skills:
@@ -112,12 +112,12 @@ public class Menu {
                 3. Archer\t 70HP 12dmg 40mana 2defense
                    skills:
                    Focus (10 mana 3 turn 100% hit chance)
-                   Arrow to the knee (10 mana stun 3 turns)
+                   Arrow to the knee (10 mana 3x dmg 100% hit chance)
                 
                 4. Wizard\t 60HP 8dmg 100mana 1defense
                    skills:
                    Petrify (5 mana stun 3 turns)
-                   Fireball (5 mana x2 dmg attack, 2 turns x1 damage on start of turn)
+                   Fireball (5 mana x2 dmg attack)
                 """);
 
     }
@@ -153,11 +153,11 @@ public class Menu {
             """);
             case "Archer" -> System.out.println("""
             1. Focus (10 mana 3 turn 100% hit chance)
-            2. Arrow to the knee (10 mana stun 3 turns)
+            2. Arrow to the knee (10 mana 3x dmg 100% hit chance)
             """);
             case "Wizard" -> System.out.println("""
             1. Petrify (5 mana stun 3 turns)
-            2. Fireball (5 mana x2 dmg attack, 2 turns x1 damage on start of turn)
+            2. Fireball (5 mana x2 dmg attack)
             """);
         }
 

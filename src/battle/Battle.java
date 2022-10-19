@@ -27,7 +27,7 @@ public class Battle {
         return monsters.get(random);
     }
 
-    public void battleStart(Player player,Monster monster) {
+    public void battleStart(Player player,Monster monster) throws InterruptedException {
 
         boolean hasWon;
         int defTime = 0;
@@ -36,10 +36,11 @@ public class Battle {
         do {
             battleScreen(player, monster);
             turnInfo.delete(0, turnInfo.length());
-            hasWon = false;
 
             if (player.getHp() <= 0) {
-                turnInfo.append("You are defeated, better luck next time!\n");
+                System.out.println("You are defeated, better luck next time!");
+                //noinspection BusyWait
+                Thread.sleep(1000);
                 break;
             }
             userInput = scanner.nextLine();
@@ -52,12 +53,6 @@ public class Battle {
                         monster.setHp(monster.getHp() - (playerAttack - monster.getDefense()));
                         turnInfo.append("You attack for ").append(playerAttack).append(" damage! ").append(monster.getDefense()).append(" blocked!\n");
                     }
-                    if (monster.getHp() <= 0) {
-                        turnInfo.append("You've defeated the ").append(monster.getClass().getSimpleName());
-                        hasWon = true;
-                    } else {
-                        turnInfo.append(monster.getClass().getSimpleName()).append(" ").append(monster.getHp()).append("HP left\n");
-                    }
                 }
                 case "2" -> {
                     player.setDefense(player.defend());
@@ -65,7 +60,18 @@ public class Battle {
                     defTime = 3;
                 }
                 case "3" -> //add a special attack
-                        Menu.specialMove(player);
+                {
+                    Menu.specialMove(player);
+                    userInput = scanner.nextLine();
+                    if (userInput.equals("1")){
+                        player.skill1();
+                    } else if (userInput.equals("2")) {
+                        int skill2 = player.skill2();
+                        monster.setHp(monster.getHp() - skill2);
+                        turnInfo.append("Your skill does ").append(skill2).append(" damage!\n");
+                    }
+
+                }
                 case "4" -> {
                     if (player.getHealthPot() > 0) {
                         player.drinkHealthPot();
@@ -84,6 +90,14 @@ public class Battle {
                 }
 
             }
+            if (monster.getHp() <= 0) {
+                System.out.printf("You've defeated the %s",monster.getClass().getSimpleName());
+                //noinspection BusyWait
+                Thread.sleep(1000);
+                break;
+            } else {
+                turnInfo.append(monster.getClass().getSimpleName()).append(" ").append(monster.getHp()).append("HP left\n");
+            }
             int monsterAttack = monster.attack();
             if (player.getDefense()>=monsterAttack){
                 turnInfo.append("Your mighty defence negates all damage!");
@@ -96,7 +110,7 @@ public class Battle {
                 player.setDefense(startDef);
                 turnInfo.append("Defense reset to ").append(startDef);
             }
-        } while (!hasWon);
+        } while (true);
         player.setDefense(startDef);
     }
 

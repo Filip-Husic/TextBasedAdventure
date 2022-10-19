@@ -51,8 +51,8 @@ public class Game {
     }
 
     public void playerRoleSet(){
-        userInput = scanner.nextLine();
         do {
+            userInput = scanner.nextLine();
             switch (userInput) {
                 case "1" -> {
                     player = new Warrior();

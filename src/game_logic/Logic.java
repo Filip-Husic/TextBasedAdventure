@@ -30,6 +30,7 @@ public class Logic {
             if (firstMap.isNearMonster()) {
                 System.out.println("Fight"); //to do
                 do {
+                    player.setHp(player.getHp()-monsters.get(0).attack());//monster attacks first for more difficulty
                     battle.battleScreen(player,monsters.get(0));
                     userInput = scanner.nextLine();
                     switch (userInput){

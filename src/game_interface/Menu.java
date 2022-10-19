@@ -5,9 +5,76 @@ import player.Player;
 
 @SuppressWarnings("unused")
 public class Menu {
-
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_RED = "\u001B[31m";
+    final String ANSI_GREEN = "\u001B[32m";
+    final String ANSI_YELLOW = "\u001B[33m";
 
     public void welcomeText() {
+        System.out.println(ANSI_GREEN +"                                                                                                                                                                                   ..                   \n" +
+                "                                                                                                                                                                                   .. .                 \n" +
+                "                                                                                                                                                                                   ..  ..               \n" +
+                "                                                                                                                                                                                   ..  ..               \n" +
+                "                                                                                                                                                                                   ..   ..              \n" +
+                "                                                                                                                                                                                  ..   ..               \n" +
+                "                                                                                                                                                                                 ..    ..               \n" +
+                "                                                                                                                                                                                ..    .                 \n" +
+                "                                                                                                                                                                              ... ...                   \n" +
+                "                         .........                                                            ........         ..............            ....                                .....                      \n" +
+                "                       ..............        .               .    .'              ..        ............     ................          .........        ..              .                               \n" +
+                "                       ..            ..      .              ..    ....            ..     ..                  ..                     ..          ..      ....            .                               \n" +
+                "                       ..              ..    .              ..    ..  .           ..    .                    ..                    ..             ..    ..  .           .                               \n" +
+                "                       ..              ..    .              ..    ..   ..         ..   ..                    ..                   ..              ..    ..   ..         .                               \n" +
+                "                       ..              ..    .              ..    ..     .        ..   ..                    ..                   ..              ..    ..     .        .                               \n" +
+                "                       ..              ..    .              ..    ..      ..      ..   ..                    .'.......            ..              ..    ..      ..      .                               \n" +
+                "                       ..              ..    .              ..    ..        .     ..   ..          ......    ..                   ..              ..    ..        .     .                               \n" +
+                "                       ..              ..    .              ..    ..         ..   ..   ..               ..   ..                   ..              ..    ..         ..   .                               \n" +
+                "                       ..             ..     .              ..    ..           .  ..    ..              ..   ..                     .            ..     ..           . ..                               \n" +
+                "                       ..           ..       ..             ..    ..            ..'.      ..            .    ..                       .        ..       ..            ...                               \n" +
+                "                        ............           .............      .              ..         ...........      .................          .......         .              ..                               \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                                                                                                                                                        \n" +
+                "                                                                      ..'.       .''          '.           ..        .'.                                                                                \n" +
+                "                                                             ........'c,',.....';:dd;.......'o0d. .........:l. .......;;..........                                                                      \n" +
+                "                                                             ..    ,c::;co,    ,xOkolo,    'kNXKd;.     .,o0Kd;.    .,'':o:..   ..                                                                      \n" +
+                "                                                              ...  .'...''.     ','....    .';,,,.       .,,,,'.     ....'..   ...                                                                      \n" +
+                "                                                                ..                                                            ..                                                                        \n" +
+                "                                                                ..                                                            .                                                                         \n" +
+                "                                                                ..                                                           ..                                                                         \n" +
+                "                                                                ..                            ..                              .                                                                         \n" +
+                "                                                                ..                           ....                             .                                                                         \n" +
+                "                                                                ..                         ..    ..                           .                                                                         \n" +
+                "                                                                ..                        .        ..                         .                                                                         \n" +
+                "                                                                ..                 .    ..           ..                       .                                                                         \n" +
+                "                                                                ..                ',  ..               .  .,.                 .                                                                         \n" +
+                "                                                                ..                ':..                  ..,;.                 .                                                                         \n" +
+                "                                                                ..                .,.      ..'''..        ',                  .                                                                         \n" +
+                "                                                                ..                ..     .............     .                  .                                                                         \n" +
+                "                                                                ..                ..   .,.         ..''    .                  .                                                                         \n" +
+                "                                                                ..                ..   ,'            .;.   .                  .                                                                         \n" +
+                "                                                                ..                ..  .;.   .,,,''....;'   .                  .                                                                         \n" +
+                "                                                                ..                ..   ',    ......'',;.   .                  .                                                                         \n" +
+                "                                                                ..                ..    .'.  .     ..'.    .                  .                                                                         \n" +
+                "                                                                ..                ..     ..'''..''...      .                  .                                                                         \n" +
+                "                                                                ..                ..        ......         .                  .                                                                         \n" +
+                "                                                                ..                ..  .,''''''''''''''''.  .                  .                                                                         \n" +
+                "                                                                ..                ..  .,,,,,,,,,,,,,,,,,.  .                 ..                                                                         \n" +
+                "         .           ..        ...'.        .'.          .,.    ..  .'           ';;. .,,,,,,,,,,,,,,,,,.            .,.     ..    .           .            .''.       .,'                              \n" +
+                "  .....':c,.........,;;,.......;:;;;,......;ooc',;.......';:;'......,:,.........,,;;'',,,,,::;,,,;;,,,,'..     .......;;...........,'. ........,,. ........,c,',.....,;cxo;.......      .......         \n" +
+                "      .cc,;:o:    .:l:::c,.   .:c::lo:.    :ddxolc.    ;l:;cc;.    ',.,::;.    ,c..,:c.    'c:;;;;.     ...   ..    .,'':c:'.   .,ll:,,'.    ,cl:,,,.    ,l::;lo.    ;kOxlol'    ..    ..    ..         \n" +
+                "       .....'.     .......     ...''..     ...'...     .......      ......      ......      ......       ......      .......     .......     .......     .....'.     ..'....      ......      ...       \n" +
+                "                                                                                                                                                                                                       " + ANSI_RESET);
         System.out.println("Hello adventurer, welcome to the game.\nChoose your fate!");
     }
 
@@ -40,16 +107,16 @@ public class Menu {
 
     }
 
-        public void entrance () throws InterruptedException {
-            System.out.print("You are entering the dungeon.");
-            Thread.sleep(1000);
-            System.out.print(".");
-            Thread.sleep(1000);
-            System.out.println(".");
-            Thread.sleep(1000);
-        }
-        public static void fightMenu () {
-            System.out.println("""
+    public void entrance () throws InterruptedException {
+        System.out.print("You are entering the dungeon.");
+        Thread.sleep(1000);
+        System.out.print(".");
+        Thread.sleep(1000);
+        System.out.println(".");
+        Thread.sleep(1000);
+    }
+    public static void fightMenu () {
+        System.out.println("""
                     Choose your action:
                     1. Attack
                     2. Defend
@@ -58,13 +125,38 @@ public class Menu {
                     5. Drink mana potion +40% max mana
                     
                     """);
-        }
-
-        public void endGame (Player player) {
-            if (player.getHp() <= 0) {
-                System.out.println("You lose, better luck next time!");//if lost
-            }//else if(boss.defeated){
-            //System.out.println("Congratulation, you've won the game!");//if won
-            //}
-             }
     }
+
+    public void endGame (Player player) {
+        if (player.getHp() <= 0) {
+            System.out.println("You lose, better luck next time!");
+            System.out.println(ANSI_RED +"                              /`._      ,\n" +
+                    "                             /     \\   / \\\n" +
+                    "                             ) ,-==-> /\\/ \\\n" +
+                    "                              )__\\\\/ // \\  |\n" +
+                    "                             /  /' \\//   | |\n" +
+                    "                            /  (  /|/    | /\n" +
+                    "                           /     //|    /,'\n" +
+                    "                          // /  (( )    '\n" +
+                    "                         //     // \\    |\n" +
+                    "                        //     (#) |\n" +
+                    "                       /        )\\/ \\   '       ____\n" +
+                    "                      /        /#/   )         /,.__\\__,,--=_,\n" +
+                    "                     /         \\#\\  /)      __/ + \\____,--==<\n" +
+                    "                     //gnv_____/#/_/'      (\\_\\__+/_,   ---<^\n" +
+                    "                                                    '==--=='" + ANSI_RESET);
+        }else {
+            System.out.println(ANSI_YELLOW + "                                                                     \n" +
+                    "            88                                                       \n" +
+                    "            \"\"              ,d                                       \n" +
+                    "                            88                                       \n" +
+                    "8b       d8 88  ,adPPYba, MM88MMM ,adPPYba,  8b,dPPYba, 8b       d8  \n" +
+                    "`8b     d8' 88 a8\"     \"\"   88   a8\"     \"8a 88P'   \"Y8 `8b     d8'  \n" +
+                    " `8b   d8'  88 8b           88   8b       d8 88          `8b   d8'   \n" +
+                    "  `8b,d8'   88 \"8a,   ,aa   88,  \"8a,   ,a8\" 88           `8b,d8'    \n" +
+                    "    \"8\"     88  `\"Ybbd8\"'   \"Y888 `\"YbbdP\"'  88             Y88'     \n" +
+                    "                                                            d8'      \n" +
+                    "                                                           d8'       " + ANSI_RESET);
+        }
+    }
+}

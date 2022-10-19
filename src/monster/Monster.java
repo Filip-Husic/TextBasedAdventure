@@ -60,10 +60,20 @@ public class Monster implements Monsters{
 
     @Override
     public int attack() {
-        return this.getDmg();
+        return this.getDmg() * multiCheck();
     }
     public String getStats(){
         return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");
+    }
+
+    public int multiCheck() {
+        int tempRandom = (int)(Math.random() * 100);
+        if (tempRandom <= 10) {
+            return 2;
+        } else if (tempRandom > 10 && tempRandom <= 35) {
+            return 0;
+        }
+        return 1;
     }
 
 }

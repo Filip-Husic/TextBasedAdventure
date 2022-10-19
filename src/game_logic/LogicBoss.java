@@ -3,7 +3,7 @@ package game_logic;
 import chest.Chest;
 import map.FirstMap;
 import map.SecondMap;
-import monsters.Boss;
+import monster.Boss;
 import player.Player;
 
 import java.util.Scanner;

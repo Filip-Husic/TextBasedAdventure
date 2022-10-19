@@ -12,6 +12,7 @@ public class Game {
     Menu menu = new Menu();
     String userInput;
     String tempDiff;
+    boolean isEndGame = false;
 
     Logic logic = new Logic();
 
@@ -26,9 +27,7 @@ public class Game {
                 case "0" -> System.out.print("");
                 default -> System.out.println("Enter a option from 0-1");
             }
-
-
-        }while (!userInput.equals("0"));
+        } while (!userInput.equals("0") || isEndGame);
 
     }
     public void startGame() throws InterruptedException {
@@ -41,6 +40,7 @@ public class Game {
         menu.entrance();
         logic.playMap(player, Integer.parseInt(tempDiff));
         menu.endGame(player);
+        isEndGame = true;
     }
 
    /* public void createMonsters(double diff){

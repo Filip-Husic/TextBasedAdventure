@@ -66,10 +66,11 @@ public class Battle {
                     isValidChoice = true;
                     int playerAttack = player.attack();//player attack
                     if (monster.getDefense() >= playerAttack) {
-                        turnInfo.append("You do no damage to the monster!\n");
+                        turnInfo.append("You don't do any damage to the monster!\n");
                     } else {
                         monster.setHp(monster.getHp() - (playerAttack - monster.getDefense()));
-                        turnInfo.append("You attack for ").append(playerAttack).append(" damage! ").append(monster.getDefense()).append(" blocked!\n");
+                        //noinspection UnnecessaryToStringCall
+                        turnInfo.append(monster.toString()).append(" took ").append(playerAttack - monster.getDefense()).append(" damage.\n");
                     }
                 }
                 case "2" -> {
@@ -132,9 +133,6 @@ public class Battle {
                 //noinspection BusyWait
                 Thread.sleep(1000);
                 break;
-            } else {
-                //noinspection UnnecessaryToStringCall
-                turnInfo.append(monster.toString()).append(" ").append(monster.getHp()).append("HP left\n");
             }
 
             int monsterAttack = monster.attack();
@@ -142,7 +140,7 @@ public class Battle {
                 turnInfo.append("Your take no damage!\n");
             } else {
             player.setHp(player.getHp() - (monsterAttack - player.getDefense()));//monster attacks last to make it a bit easier
-            turnInfo.append("Monster attacks for ").append((monsterAttack - player.getDefense())).append(" damage! ").append(player.getDefense()).append(" blocked!\n");
+            turnInfo.append(player.getName()).append(" took ").append(monsterAttack - player.getDefense()).append(" damage.\n");
             }
             if (player.getDefense()>startDef){
 

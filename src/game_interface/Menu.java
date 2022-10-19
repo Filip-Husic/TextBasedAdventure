@@ -104,8 +104,8 @@ public class Menu {
                 "\n1. Attack " +
                 "\n2. Defend " +
                 "\n3. Special attack " +
-                "\n4. Drink health potion +50% maxHP (You have " + player.getHealthPot() + "HP potions)" +
-                "\n5. Drink mana potion +40% max mana (You have " + player.getManaPot() + "MP potions)");
+                "\n4. Drink health potion +50% maxHP (You have " + player.getHealthPot() + "HP potion)" +
+                "\n5. Drink mana potion +40% max mana (You have " + player.getManaPot() + "MP potion)");
     }
     public static void specialMove(Player player){
         switch (player.getRole()){

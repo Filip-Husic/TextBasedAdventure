@@ -1,5 +1,7 @@
 package monster;
 
+import battle.Battle;
+
 @SuppressWarnings("unused")
 public class Monster implements Monsters{
 
@@ -60,7 +62,15 @@ public class Monster implements Monsters{
 
     @Override
     public int attack() {
-        return this.getDmg() * multiCheck();
+        int multiplier = multiCheck();
+        int calcDmg = getDmg()*multiplier;
+        switch (multiplier){
+            case 2 -> Battle.appendTurnInfo(this + " CRIT attacks for " + calcDmg + " damage!\n");
+            case 1 -> Battle.appendTurnInfo(this + " attacks for " + calcDmg + " damage!\n");
+            case 0 -> Battle.appendTurnInfo(this + " misses!\n");
+        }
+        return calcDmg;
+
     }
     public String getStats(){
         return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");

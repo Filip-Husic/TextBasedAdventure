@@ -98,7 +98,15 @@ public class Player implements PlayerInterface {
 
     @Override
     public int attack() {
-        return this.getDmg() * multiCheck();
+        int multiplier = multiCheck();
+        int calcDmg = getDmg()*multiplier;
+        switch (multiplier){
+            case 2 -> Battle.appendTurnInfo(getName() + " CRIT attacks for " + calcDmg + " damage!\n");
+            case 1 -> Battle.appendTurnInfo(getName() + " attacks for " + calcDmg + " damage!\n");
+            case 0 -> Battle.appendTurnInfo(getName() + " misses!\n");
+        }
+        return calcDmg;
+
     }
 
     @Override

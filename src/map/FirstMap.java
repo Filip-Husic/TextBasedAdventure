@@ -102,13 +102,17 @@ public class FirstMap implements Map{
                 System.out.print(z + "  ");
             }
         }
+        setChestOnMap();
     }
 
     @Override
     public void setPlayerOnMap() {
-        map[19][2] = player;
+        /*map[19][2] = player;
         playerPosition[0] = 19;
-        playerPosition[1] = 2;
+        playerPosition[1] = 2;*/
+        map[1][23] = player;
+        playerPosition[0] = 1;
+        playerPosition[1] = 23;
     }
 
     @Override
@@ -132,6 +136,12 @@ public class FirstMap implements Map{
         map[4][21] = chest;
         chestPosition2[0] = 4;
         chestPosition2[1] = 21;
+
+        if (Arrays.equals(chestPosition1, playerPosition)){
+            map[chestPosition1[0]][chestPosition1[1]] = player;
+        } else if (Arrays.equals(chestPosition2, playerPosition)){
+            map[chestPosition2[0]][chestPosition2[1]] = player;
+        }
     }
 
     public void setExitPoint() {
@@ -189,6 +199,7 @@ public class FirstMap implements Map{
                 map[position[0]][position[1]] != monster1 &&
                 map[position[0]][position[1]] != monster2 &&
                 map[position[0]][position[1]] != monster3 &&
+                map[position[0]][position[1]] != exitChar &&
                 map[position[0]][position[1]] != chest;
     }
 

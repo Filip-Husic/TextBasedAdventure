@@ -10,6 +10,7 @@ import player.Player;
 public class Logic {
     FirstMap firstMap = new FirstMap();
     Chest chest = new Chest();
+    LogicBoss logicBoss = new LogicBoss();
 
     public void playMap(Player player, int diff) {
 
@@ -25,7 +26,7 @@ public class Logic {
             } else if (firstMap.isNearChest()) {
                 chest.randomStatUp(player);
             } else if (firstMap.isNearExit()) {
-                System.out.println("Exit"); //to do
+                logicBoss.playMap(player, diff);
             }
         } while (player.getHp() > 0 || firstMap.isNearExit());
     }

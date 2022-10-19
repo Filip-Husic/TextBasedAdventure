@@ -163,11 +163,12 @@ public class Menu {
         }
     }
 
-    public void askName(String choice) {
+    public String askName(String choice) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("An excellent choice, what is your name mighty " + choice + "?");
-        String userInput = sc.nextLine();
-        System.out.println("Splendid!" + " Enter the dungeon " + userInput + " and prove your worth!");
+        String playerName = sc.nextLine();
+        System.out.println("Splendid!" + " Enter the dungeon " + playerName + " and prove your worth!");
+        return playerName;
     }
 }

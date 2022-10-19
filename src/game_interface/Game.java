@@ -8,13 +8,12 @@ import java.util.Scanner;
 @SuppressWarnings({"unused"})
 public class Game {
     private Player player;
-    private Scanner scanner = new Scanner(System.in);
-    private Menu menu = new Menu();
+    private final Scanner scanner = new Scanner(System.in);
+    private final Menu menu = new Menu();
     private String userInput;
-    private String tempDiff;
     private boolean isEndGame = false;
     private double diff = 0.0;
-    private Logic logic = new Logic();
+    private final Logic logic = new Logic();
 
 
     public void intro() throws InterruptedException {
@@ -37,6 +36,7 @@ public class Game {
     }
     public void startGame() throws InterruptedException {
         menu.chooseDifficulty();
+        String tempDiff;
         do {
             tempDiff = scanner.nextLine();
         } while (!(tempDiff.equals("1") || tempDiff.equals("2") || tempDiff.equals("3") || tempDiff.equals("4")));
@@ -60,23 +60,22 @@ public class Game {
             switch (userInput) {
                 case "1" -> {
                     player = new Warrior();
-                    menu.askName("warrior");
+                    player.setName(menu.askName("warrior"));
                 }
                 case "2" -> {
                     player = new Rogue();
-                    menu.askName("rogue");
+                    player.setName(menu.askName("rogue"));
                 }
                 case "3" -> {
                     player = new Archer();
-                    menu.askName("archer");
+                    player.setName(menu.askName("archer"));
                 }
                 case "4" -> {
                     player = new Wizard();
-                    menu.askName("wizard");
+                    player.setName(menu.askName("wizard"));
                 }
                 default -> System.out.println("Please select a valid role from 1-4");
             }
-            player.setName(userInput);
         } while (player == null);
     }
 }

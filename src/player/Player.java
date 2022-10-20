@@ -139,7 +139,7 @@ public class Player implements PlayerInterface {
     }
 
     public String getStats() {
-        return (getMaxHP() + "/" + getHp() + "HP " + getMaxMana() + "/" + getMana() + "MP " + getDefense() + "D");
+        return (getHp()+"/"+getMaxHP()+"HP "+getMana()+"/"+getMaxMana()+"MP "+getDefense()+"D");
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -294,14 +294,6 @@ public class Player implements PlayerInterface {
                     int regenHP = regenHP();
                     Battle.appendTurnInfo(getName() + " " + regenHP + "+ HP!\n");
                 }
-            }
-            case "Rogue" -> {
-                int backStabDmg = backStab();
-                Battle.appendTurnInfo("A cunning strike for " + backStabDmg + " damage!");
-            }
-            case "Archer" -> {
-                int arrowDmg = arrowToTheKnee();
-                Battle.appendTurnInfo("The monster used to be an adventurer like you,\nuntil you shoot it in the knee for " + arrowDmg + " damage!\n");
             }
             case "Wizard" -> {
                 if (getMana() <= getMaxMana() - 5) {

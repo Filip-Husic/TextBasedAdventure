@@ -73,7 +73,7 @@ public class Monster implements Monsters{
 
     }
     public String getStats(){
-        return (getMaxHP()+"/"+getHp()+"HP "+getMaxMana()+"/"+getMana()+"MP "+getDefense()+"D");
+        return (getHp()+"/"+getMaxHP()+"HP "+getMana()+"/"+getMaxMana()+"MP "+getDefense()+"D");
     }
 
     @SuppressWarnings("ConstantConditions")

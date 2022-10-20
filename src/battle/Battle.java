@@ -48,9 +48,14 @@ public class Battle {
         int startDef = player.getDefense();
         int startDmg = player.getDmg();
 
-        turnInfo.append("\t\t\t  !!BATTLE START!!");
+        turnInfo.append("\t\t\t  !!BATTLE START!!\n");
 
         do {
+            if (player.toString().equals("Archer")){
+                monster.setHp(monster.getHp() - (player.getDmg() - monster.getDefense()));
+                //noinspection UnnecessaryToStringCall
+                turnInfo.append(monster.toString()).append(" took ").append(player.getDmg() - monster.getDefense()).append(" damage.\n");
+            }
             battleScreen(player, monster);
             turnInfo.delete(0, turnInfo.length());
 

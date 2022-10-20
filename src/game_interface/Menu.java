@@ -82,7 +82,7 @@ public class Menu {
                    \t\tSkills:
                    \t\t ¤ Rain of arrows (10 mana, 10 attacks 50% hit chance)
                    \t\t ¤ Arrow to the knee (10 mana, 2x dmg 100% hit chance)
-                   \t\t ¤ Passive: 1 free action on combat start
+                   \t\t ¤ Passive: 1 free attack on combat start
                    
                 \t4. Wizard\t ==> 60HP 8dmg 100mana 1defense
                    \t\tSkills:

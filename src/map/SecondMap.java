@@ -19,6 +19,7 @@ public class SecondMap implements Map{
     public SecondMap() {
         for (var e : map) {
             for (var z : e) {
+                //noinspection UnusedAssignment
                 z = wall;
             }
         }
@@ -88,7 +89,7 @@ public class SecondMap implements Map{
     @Override
     public void move() {
         Scanner sc = new Scanner(System.in);
-        String input = "A";
+        @SuppressWarnings("UnusedAssignment") String input = "A";
 
         input = sc.nextLine();
 
@@ -127,6 +128,7 @@ public class SecondMap implements Map{
         showMap();
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean checkWall(int[] position) {
         return map[position[0]][position[1]] != floor &&
                 map[position[0]][position[1]] != '(' &&
@@ -146,6 +148,11 @@ public class SecondMap implements Map{
     public boolean isNearChest() {
         return Arrays.equals(playerPosition, chestPosition1) ||
                 Arrays.equals(playerPosition, chestPosition2);
+    }
+
+    @Override
+    public boolean isNearExit() { //final map dont have exit
+        return false;
     }
 
     public void showMap() {

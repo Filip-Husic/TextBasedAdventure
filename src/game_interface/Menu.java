@@ -70,25 +70,21 @@ public class Menu {
                    \t\tSkills:
                    \t\t ¤ Rage (10 mana, x2 dmg for rest of combat)
                    \t\t ¤ Strong attack (10 mana, x3 dmg 50% hit chance)
-                   \t\t ¤ Passive: regen 2HP each turn
-                                
+                
                 \t2. Rogue\t ==> 80HP 15dmg 60mana 3defense
                    \t\tSkills:
                    \t\t ¤ Shadow walk (10 mana, 3 turn dodge 100%)
                    \t\t ¤ Backstab (10 mana, x2 dmg attack 100% hit chance)
-                   \t\t ¤ Passive: double CRIT chance and more normal hit chance
-                                
+                
                 \t3. Archer\t ==> 70HP 12dmg 40mana 2defense
                    \t\tSkills:
                    \t\t ¤ Rain of arrows (10 mana, 10 attacks 50% hit chance)
                    \t\t ¤ Arrow to the knee (10 mana, 2x dmg 100% hit chance)
-                   \t\t ¤ Passive: 1 free action on combat start
-                   
+                
                 \t4. Wizard\t ==> 60HP 8dmg 100mana 1defense
                    \t\tSkills:
                    \t\t ¤ Lightning storm (10 mana, 20 attacks 30% hit chance)
                    \t\t ¤ Fireball (10 mana, x2 dmg attack 50% chance of 5x dmg)
-                   \t\t ¤ Passive: gain 5MP each turn
                 """);
 
     }
@@ -108,7 +104,7 @@ public class Menu {
                 "\n1. Attack " +
                 "\n2. Defend " +
                 "\n3. Special attack " +
-                "\n4. Drink health potion +50% maxHP (You have " + player.getHealthPot() + "HP potion)" +
+                "\n4. Drink health potion +50% max HP (You have " + player.getHealthPot() + "HP potion)" +
                 "\n5. Drink mana potion +40% max mana (You have " + player.getManaPot() + "MP potion)");
     }
     public static void specialMove(Player player){
@@ -171,8 +167,8 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("An excellent choice, what is your name mighty " + choice + "?");
-        String playerName = sc.nextLine();
-        System.out.println("Splendid!" + " Enter the dungeon " + playerName + " and prove your worth!");
-        return playerName;
+        String userInput = sc.nextLine();
+        System.out.println("Splendid!" + " Enter the dungeon " + userInput + " and prove your worth!");
+        return userInput;
     }
 }

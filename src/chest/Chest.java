@@ -1,6 +1,5 @@
 package chest;
 
-import map.Map;
 import player.Player;
 
 public class Chest {

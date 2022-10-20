@@ -22,6 +22,11 @@ public class FirstMap implements Map{
     char chest = '\u00A9'; //©
     char exitChar = '\u019C'; //Ɯ
     char wall = '\u0D04';
+    final String ANSI_RED = "\u001B[31m";
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_GREEN = "\u001B[32m";
+    final String ANSI_YELLOW = "\u001B[33m";
+    final String ANSI_BLUE = "\u001B[34m";
 
 
     public FirstMap() {
@@ -100,10 +105,17 @@ public class FirstMap implements Map{
         for (var e : map) {
             System.out.println();
             for (var z : e) {
-                System.out.print(z + "  ");
+                if (z == monster1 || z == monster2 || z == monster3) {
+                    System.out.print(ANSI_RED + z + "  " + ANSI_RESET);
+                } else if (z == chest) {
+                    System.out.print(ANSI_YELLOW + z + "  " + ANSI_RESET);
+                } else if (z == player) {
+                    System.out.print(ANSI_BLUE + z + "  " + ANSI_RESET);
+                } else {
+                    System.out.print(ANSI_GREEN + z + "  " + ANSI_RESET);
+                }
             }
         }
-        setChestOnMap();
     }
 
     @SuppressWarnings("CommentedOutCode")
@@ -195,7 +207,7 @@ public class FirstMap implements Map{
                 default :
                     break;
             }
-            showMap();
+        showMap();
     }
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
@@ -207,23 +219,42 @@ public class FirstMap implements Map{
                 map[position[0]][position[1]] != exitChar &&
                 map[position[0]][position[1]] != chest;
     }
-
+    @Override
     @SuppressWarnings("unused")
-    public void setMapCordToFloor(int a, int b) {
-        map[a][b] = floor;
+    public void setMapCordToFloor() {
+        if (Arrays.equals(playerPosition, monsterPosition1)) {
+            monsterPosition1[0] = 0;
+            monsterPosition1[1] = 0;
+        } else if (Arrays.equals(playerPosition, monsterPosition2)) {
+            monsterPosition2[0] = 0;
+            monsterPosition2[1] = 0;
+        } else if (Arrays.equals(playerPosition, monsterPosition3)) {
+            monsterPosition3[0] = 0;
+            monsterPosition3[1] = 0;
+        }
+        if (Arrays.equals(playerPosition, chestPosition1)) {
+            chestPosition1[0] = 0;
+            chestPosition1[1] = 0;
+        } else if ( Arrays.equals(playerPosition, chestPosition2)) {
+            chestPosition2[0] = 0;
+            chestPosition2[1] = 0;
+        }
     }
 
+    @Override
     public boolean isNearMonster() {
         return Arrays.equals(playerPosition, monsterPosition1) ||
                 Arrays.equals(playerPosition, monsterPosition2) ||
                 Arrays.equals(playerPosition, monsterPosition3);
     }
 
+    @Override
     public boolean isNearChest() {
          return Arrays.equals(playerPosition, chestPosition1) ||
                  Arrays.equals(playerPosition, chestPosition2);
     }
 
+    @Override
     public boolean isNearExit() {
         return Arrays.equals(playerPosition, exitPosition1) ||
                 Arrays.equals(playerPosition, exitPosition2);

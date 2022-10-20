@@ -16,6 +16,12 @@ public class SecondMap implements Map{
     char chest = '\u00A9'; //©
     char wall = '\u0D04';
 
+    final String ANSI_RED = "\u001B[31m";
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_GREEN = "\u001B[32m";
+    final String ANSI_YELLOW = "\u001B[33m";
+    final String ANSI_BLUE = "\u001B[34m";
+
     public SecondMap() {
         for (var e : map) {
             for (var z : e) {
@@ -155,14 +161,32 @@ public class SecondMap implements Map{
         return false;
     }
 
+    @Override
+    public void setMapCordToFloor() {
+        if (Arrays.equals(playerPosition, chestPosition1)) {
+            chestPosition1[0] = 0;
+            chestPosition1[1] = 0;
+        } else if ( Arrays.equals(playerPosition, chestPosition2)) {
+            chestPosition2[0] = 0;
+            chestPosition2[1] = 0;
+        }
+    }
+
     public void showMap() {
         for (var e : map) {
             System.out.println();
             for (var z : e) {
-                System.out.print(z + "  ");
+                if (z == '=') {
+                    System.out.print(ANSI_RED + z + "  " + ANSI_RESET);
+                } else if (z == chest || z == '(' || z == ')' || z == '~' || z == '_'  || z == ':') {
+                    System.out.print(ANSI_YELLOW + z + "  " + ANSI_RESET);
+                } else if (z == player) {
+                    System.out.print(ANSI_BLUE + z + "  " + ANSI_RESET);
+                } else {
+                    System.out.print(ANSI_GREEN + z + "  " + ANSI_RESET);
+                }
             }
         }
-        setChestOnMap();
         setMonsterOnMap();
         seePlayer();
     }

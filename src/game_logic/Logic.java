@@ -8,7 +8,6 @@ import monster.*;
 import player.Player;
 
 
-@SuppressWarnings("SwitchStatementWithoutDefaultBranch")
 public class Logic {
 
     //LogicBoss logicBoss = new LogicBoss();

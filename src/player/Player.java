@@ -137,14 +137,14 @@ public class Player implements PlayerInterface {
     }
 
     public void drinkManaPot() {
-        if (this.getMana() < (this.getMaxMana() * 0.6)) {
-            this.setMana((int) (this.getMana() + (this.getMaxMana() * 0.4)));
-        } else this.setMana(this.getMaxMana());
+        if (getMana() < (getMaxMana() * 0.6)) {
+            setMana((int) (getMana() + (getMaxMana() * 0.4)));
+        } else setMana(getMaxMana());
         setManaPot(getManaPot() - 1);
     }
 
     public String getStats() {
-        return (getIcon() + " " + getHp()+"/"+getMaxHP()+"HP "+getMana()+"/"+getMaxMana()+"MP "+getDefense()+"D");
+        return (getIcon() + " " + getHp()+"/"+getMaxHP()+"HP "+getMana()+"/"+getMaxMana()+"MP "+getDmg()+"Atk/"+getDefense()+"Def");
     }
 
     @SuppressWarnings("ConstantConditions")

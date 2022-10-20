@@ -11,5 +11,7 @@ public interface Map {
     boolean isNearChest();
     boolean isNearExit();
 
+    void setMapCordToFloor();
+
 
 }

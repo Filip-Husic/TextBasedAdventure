@@ -17,7 +17,7 @@ public class Game {
     private double diff = 0.0;
     private final Logic logic = new Logic();
 
-    Map firstMap = new FirstMap();
+
 
 
     public void intro() throws InterruptedException {
@@ -42,6 +42,7 @@ public class Game {
 
     }
     public void startGame() throws InterruptedException {
+        Map firstMap = new FirstMap();
         menu.chooseDifficulty();
         String tempDiff;
         do {

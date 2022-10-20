@@ -151,6 +151,9 @@ public class Battle {
             if (monster.getHp() <= 0) {
                 //noinspection UnnecessaryToStringCall
                 System.out.printf("You've defeated the %s",monster.toString());
+                player.setDefense(startDef);
+                player.setDmg(startDmg);
+
                 Chest chest = new Chest();
                 chest.randomStatUp(player);
                 boolean enterDetect;
@@ -182,8 +185,6 @@ public class Battle {
             player.passive();
         } while (true);
         turnInfo.delete(0, turnInfo.length());
-        player.setDefense(startDef);
-        player.setDmg(startDmg);
 
 
     }
@@ -195,14 +196,14 @@ public class Battle {
         System.out.printf("""
                 #----#----#----#----#----#----#----#----#----#
                 \t\t\t\t\t\t%s
-                \t\t\t\t\t\t\u0C06 %s
+                \t\t\t\t\t\t%s
                 
                 
                 %s
                 
                 
                   %s
-                  \u0D9E %s
+                  %s
                 #----#----#----#----#----#----#----#----#----#
                 """,
                 //monster info

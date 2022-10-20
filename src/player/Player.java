@@ -17,6 +17,9 @@ public class Player implements PlayerInterface {
     private int maxHP;
     private int maxMana;
 
+    public String getIcon() {
+        return "\u0D9E";
+    }
 
     public String getName() {
         return name;
@@ -141,7 +144,7 @@ public class Player implements PlayerInterface {
     }
 
     public String getStats() {
-        return (getHp()+"/"+getMaxHP()+"HP "+getMana()+"/"+getMaxMana()+"MP "+getDefense()+"D");
+        return (getIcon() + " " + getHp()+"/"+getMaxHP()+"HP "+getMana()+"/"+getMaxMana()+"MP "+getDefense()+"D");
     }
 
     @SuppressWarnings("ConstantConditions")

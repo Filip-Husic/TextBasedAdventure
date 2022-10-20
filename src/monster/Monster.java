@@ -14,6 +14,15 @@ public class Monster implements Monsters{
     private int maxHP;
     private int maxMana;
 
+    @SuppressWarnings("SwitchStatementWithTooFewBranches")
+    public String getIcon() {
+        String monsterIcon = "";
+        switch (toString()){
+            case "Skeleton" -> monsterIcon = "\u0C24"; //త
+        }
+        return monsterIcon;
+    }
+
     public int getHp() {
         return hp;
     }
@@ -75,7 +84,7 @@ public class Monster implements Monsters{
 
     }
     public String getStats(){
-        return (getHp()+"/"+getMaxHP()+"HP "+getMana()+"/"+getMaxMana()+"MP "+getDefense()+"D");
+        return (getIcon() + " " + getHp()+"/"+getMaxHP()+"HP "+getMana()+"/"+getMaxMana()+"MP "+getDefense()+"D");
     }
 
     @SuppressWarnings("ConstantConditions")

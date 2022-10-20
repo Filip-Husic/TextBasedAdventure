@@ -4,6 +4,6 @@ package player;
 public interface PlayerInterface {
 
 
-    int attack();
+    int normalAttack();
     void defend();
 }

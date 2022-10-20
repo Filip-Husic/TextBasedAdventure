@@ -1,5 +1,6 @@
 package battle;
 
+import chest.Chest;
 import game_interface.Menu;
 import monster.*;
 import player.*;
@@ -64,7 +65,13 @@ public class Battle {
             switch (userInput) {
                 case "1" -> {
                     isValidChoice = true;
-                    int playerAttack = player.attack();//player attack
+                    int playerAttack;
+
+                    if (player.toString().equals("Rogue")){
+                        playerAttack = player.rogueAttack();//rogue attack
+                    }else {
+                    playerAttack = player.normalAttack();//normal attack
+                    }
                     if (monster.getDefense() >= playerAttack) {
                         turnInfo.append("You don't do any damage to the monster!\n");
                     } else {
@@ -130,8 +137,14 @@ public class Battle {
             if (monster.getHp() <= 0) {
                 //noinspection UnnecessaryToStringCall
                 System.out.printf("You've defeated the %s",monster.toString());
-                //noinspection BusyWait
-                Thread.sleep(1000);
+                Chest chest = new Chest();
+                chest.randomStatUp(player);
+                boolean enterDetect;
+                do {
+                    System.out.print("Press enter to continue: ");
+                    userInput = scanner.nextLine();
+                    enterDetect = !userInput.equals("");
+                }while (enterDetect);
                 break;
             }
 

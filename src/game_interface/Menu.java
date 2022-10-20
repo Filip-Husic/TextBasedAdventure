@@ -76,7 +76,7 @@ public class Menu {
                    \t\tSkills:
                    \t\t ¤ Shadow walk (10 mana, 3 turn dodge 100%)
                    \t\t ¤ Backstab (10 mana, x2 dmg attack 100% hit chance)
-                   \t\t ¤ Passive: double CRIT chance
+                   \t\t ¤ Passive: double CRIT chance and more normal hit chance
                                 
                 \t3. Archer\t ==> 70HP 12dmg 40mana 2defense
                    \t\tSkills:

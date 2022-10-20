@@ -97,7 +97,7 @@ public class Player implements PlayerInterface {
     }
 
     @Override
-    public int attack() {
+    public int normalAttack() {
         int multiplier = multiCheck();
         int calcDmg = getDmg() * multiplier;
         switch (multiplier) {
@@ -107,6 +107,16 @@ public class Player implements PlayerInterface {
         }
         return calcDmg;
 
+    }
+    public int rogueAttack(){
+        int multiplier = multiCheck();
+        int calcDmg = getDmg() * multiplier;
+        switch (multiplier) {
+            case 2 -> Battle.appendTurnInfo(getName() + " CRIT attacks for " + calcDmg + " damage!\n");
+            case 1 -> Battle.appendTurnInfo(getName() + " attacks for " + calcDmg + " damage!\n");
+            case 0 -> Battle.appendTurnInfo(getName() + " misses!\n");
+        }
+        return calcDmg;
     }
 
     @Override
@@ -134,6 +144,14 @@ public class Player implements PlayerInterface {
 
     @SuppressWarnings("ConstantConditions")
     public int multiCheck() {
+        if (toString().equals("Rogue")){
+            int tempRandom = (int) (Math.random() * 100);
+            if (tempRandom <= 20) {
+                return 2;
+            } else if (tempRandom > 20 && tempRandom <= 35) {
+                return 0;
+            }
+        }
         int tempRandom = (int) (Math.random() * 100);
         if (tempRandom <= 10) {
             return 2;
@@ -234,7 +252,7 @@ public class Player implements PlayerInterface {
         for (int i = 0; i < 10; i++) {
             int tempRandom = (int) (Math.random() * 100);
             if (tempRandom >= 50) {
-                totalAttack += attack();
+                totalAttack += normalAttack();
             }
         }
         return totalAttack;
@@ -245,7 +263,7 @@ public class Player implements PlayerInterface {
         for (int i = 0; i < 20; i++) {
             int tempRandom = (int) (Math.random() * 100);
             if (tempRandom >= 70) {
-                totalAttack += attack();
+                totalAttack += normalAttack();
             }
         }
         return totalAttack;
@@ -263,14 +281,18 @@ public class Player implements PlayerInterface {
         setHp(getHp()+2);
         return 2;
     }
+    public int regenMana() {
+        setMana(getMana()+5);
+        return 5;
+    }
 
 
     public void passive() {
         switch (getClass().getSimpleName()) {
             case "Warrior" -> {
-                if (getHp() < getMaxHP()) {
-                    regenHP();
-                    Battle.appendTurnInfo(getName() + " " + regenHP() + " HP!\n");
+                if (getHp() <= getMaxHP() - 2) {
+                    int regenHP = regenHP();
+                    Battle.appendTurnInfo(getName() + " " + regenHP + "+ HP!\n");
                 }
             }
             case "Rogue" -> {
@@ -282,8 +304,10 @@ public class Player implements PlayerInterface {
                 Battle.appendTurnInfo("The monster used to be an adventurer like you,\nuntil you shoot it in the knee for " + arrowDmg + " damage!\n");
             }
             case "Wizard" -> {
-                int fireballDmg = fireball();
-                Battle.appendTurnInfo("Burn baby, burn for" + fireballDmg + " damage!\n");
+                if (getMana() <= getMaxMana() - 5) {
+                    int regenMP = regenMana();
+                    Battle.appendTurnInfo(getName() + " " + regenMP + "+ MP!\n");
+                }
             }
 
         }

@@ -151,7 +151,7 @@ public class Battle {
             }while (!isValidChoice);
             if (monster.getHp() <= 0) {
                 //noinspection UnnecessaryToStringCall
-                System.out.printf("You've defeated the %s",monster.toString());
+                System.out.printf("You've defeated the %s!! Here is your reward:",monster.toString());
                 player.setDefense(startDef);
                 player.setDmg(startDmg);
 
@@ -159,7 +159,7 @@ public class Battle {
                 chest.randomStatUp(player);
                 boolean enterDetect;
                 do {
-                    System.out.print("Press enter to continue: ");
+                    System.out.print("\nPress enter to continue...");
                     userInput = scanner.nextLine();
                     enterDetect = !userInput.equals("");
                 }while (enterDetect);

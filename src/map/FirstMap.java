@@ -27,6 +27,7 @@ public class FirstMap implements Map{
     final String ANSI_GREEN = "\u001B[32m";
     final String ANSI_YELLOW = "\u001B[33m";
     final String ANSI_BLUE = "\u001B[34m";
+    final String ANSI_PURPLE = "\u001B[35m";
 
 
     public FirstMap() {
@@ -82,7 +83,7 @@ public class FirstMap implements Map{
             map[i][14] = floor;
             map[i][15] = floor;
         }
-        for (int i = 16; i <= 18; i++){
+        for (int i = 16; i <= 20; i++){
             map[8][i] = floor;
             map[9][i] = floor;
         }
@@ -94,6 +95,17 @@ public class FirstMap implements Map{
             map[1][i] = floor;
             map[2][i] = floor;
         }
+
+        map[4][5] = wall;
+        map[4][4] = wall;
+        map[17][24] = wall;
+        map[16][24] = wall;
+        map[15][24] = wall;
+        map[7][18] = wall;
+        map[6][18] = wall;
+        map[5][18] = wall;
+        map[4][18] = wall;
+        map[3][18] = wall;
 
         setPlayerOnMap();
         setMonsterOnMap();
@@ -111,6 +123,8 @@ public class FirstMap implements Map{
                     System.out.print(ANSI_YELLOW + z + "  " + ANSI_RESET);
                 } else if (z == player) {
                     System.out.print(ANSI_BLUE + z + "  " + ANSI_RESET);
+                } else if (z == exitChar) {
+                    System.out.print(ANSI_PURPLE + z + "  " + ANSI_RESET);
                 } else {
                     System.out.print(ANSI_GREEN + z + "  " + ANSI_RESET);
                 }

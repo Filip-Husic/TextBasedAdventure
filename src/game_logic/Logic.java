@@ -34,6 +34,7 @@ public class Logic {
             } else if (map.isNearChest()) {
                 chest.randomStatUp(player);
                 map.setMapCordToFloor();
+                map.showMap();
             } else if (map.isNearExit()) {
                 playMap(player, diff, secondMap);
                 boss.setHp(0);

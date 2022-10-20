@@ -1,8 +1,8 @@
 package monster;
 
 @SuppressWarnings("unused")
-public class Skeleton extends Monster {
-    public Skeleton(double diff) {
+public class MergeConflict extends Monster {
+    public MergeConflict(double diff) {
         this.setHp((int) (30*diff));
         this.setMaxHP((int) (30*diff));
         this.setDmg((int) (8*diff));

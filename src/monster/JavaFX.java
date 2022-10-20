@@ -1,8 +1,8 @@
 package monster;
 
 @SuppressWarnings("unused")
-public class Boss extends Monster {
-    public Boss(double diff) {
+public class JavaFX extends Monster {
+    public JavaFX(double diff) {
         this.setHp((int) (100*diff));
         this.setMaxHP((int) (100*diff));
         this.setDmg((int) (10*diff));

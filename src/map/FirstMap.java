@@ -122,13 +122,15 @@ public class FirstMap implements Map{
     @Override
     public void setPlayerOnMap() {
         //start on map beginning
-        /*map[19][2] = player;
+        map[19][2] = player;
         playerPosition[0] = 19;
-        playerPosition[1] = 2;*/
+        playerPosition[1] = 2;
         //start on map end
+/*
         map[1][23] = player;
         playerPosition[0] = 1;
         playerPosition[1] = 23;
+*/
     }
 
     @Override

@@ -1,8 +1,8 @@
 package monster;
 
 @SuppressWarnings("unused")
-public class Goblin extends Monster {
-    public Goblin(double diff) {
+public class MissingCurlyBracket extends Monster {
+    public MissingCurlyBracket(double diff) {
         this.setHp((int) (25*diff));
         this.setMaxHP((int) (25*diff));
         this.setDmg((int) (6*diff));

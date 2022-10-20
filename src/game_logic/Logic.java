@@ -14,7 +14,7 @@ public class Logic {
     //LogicBoss logicBoss = new LogicBoss();
 
     public void playMap(Player player, double diff, Map map) throws InterruptedException {
-        Monster boss = new Boss(diff);
+        Monster boss = new JavaFX(diff);
         Chest chest = new Chest();
         Map secondMap = new SecondMap();
 

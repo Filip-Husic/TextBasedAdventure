@@ -3,6 +3,7 @@ package battle;
 import chest.Chest;
 import game_interface.Menu;
 import monster.*;
+import monster.NullPointerException;
 import player.*;
 
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ public class Battle {
 
     public Monster randMonster(double diff){
         ArrayList<Monster> monsters = new ArrayList<>();
-        monsters.add(new Bat(diff));
-        monsters.add(new Rat(diff));
-        monsters.add(new Goblin(diff));
-        monsters.add(new Skeleton(diff));
+        monsters.add(new NullPointerException(diff));
+        monsters.add(new InfiniteLoop(diff));
+        monsters.add(new MissingCurlyBracket(diff));
+        monsters.add(new MergeConflict(diff));
         int random = new Random().nextInt(monsters.size());
         return monsters.get(random);
     }
@@ -51,7 +52,7 @@ public class Battle {
         int startDef = player.getDefense();
         int startDmg = player.getDmg();
 
-        turnInfo.append("\t\t\t  !!BATTLE START!!\n");
+        turnInfo.append(ANSI_RED + "\t\t\t  !!BATTLE START!!\n" + ANSI_RESET);
 
         do {
             if (player.toString().equals("Archer")){

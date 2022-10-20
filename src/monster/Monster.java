@@ -14,11 +14,14 @@ public class Monster implements Monsters{
     private int maxHP;
     private int maxMana;
 
-    @SuppressWarnings("SwitchStatementWithTooFewBranches")
-    public String getIcon() {
-        String monsterIcon = "";
+    public char getIcon() {
+        char monsterIcon = ' ';
         switch (toString()){
-            case "Skeleton" -> monsterIcon = "\u0C24"; //త
+            case "InfiniteLoop" -> monsterIcon = '\u267E'; //♾
+            case "JavaFX" -> monsterIcon = '\u2620'; //☠
+            case "MergeConflict" -> monsterIcon = '\u2694'; //⚔
+            case "MissingCurlyBracket" -> monsterIcon = '\u007D'; // }
+            case "NullPointerException" -> monsterIcon = '\u26A0'; // ⚠
         }
         return monsterIcon;
     }

@@ -151,6 +151,8 @@ public class Battle {
                 turnInfo.append("Defense reset to ").append(startDef).append("\n");
             }
             }
+            //passive at the end of turn
+            player.passive();
         } while (true);
         turnInfo.delete(0, turnInfo.length());
         player.setDefense(startDef);

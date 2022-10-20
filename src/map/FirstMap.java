@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class FirstMap implements Map{
 
-    private char[][] map = new char[21][26];
+    private final char[][] map = new char[21][26];
     private final char floor = ' ';
     char player = '\u0D9E'; //ඞ
     char monster1 = '\u0C06'; //ఆ
@@ -27,6 +27,7 @@ public class FirstMap implements Map{
     public FirstMap() {
         for (var e : map) {
             for (var z : e) {
+                //noinspection UnusedAssignment
                 z = wall;
             }
         }
@@ -105,11 +106,14 @@ public class FirstMap implements Map{
         setChestOnMap();
     }
 
+    @SuppressWarnings("CommentedOutCode")
     @Override
     public void setPlayerOnMap() {
+        //start on map beginning
         /*map[19][2] = player;
         playerPosition[0] = 19;
         playerPosition[1] = 2;*/
+        //start on map end
         map[1][23] = player;
         playerPosition[0] = 1;
         playerPosition[1] = 23;
@@ -155,7 +159,7 @@ public class FirstMap implements Map{
     @Override
     public void move() {
         Scanner sc = new Scanner(System.in);
-        String input = "A";
+        String input;
 
             input = sc.nextLine();
 
@@ -194,6 +198,7 @@ public class FirstMap implements Map{
             showMap();
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean checkWall(int[] position) {
         return map[position[0]][position[1]] != floor &&
                 map[position[0]][position[1]] != monster1 &&
@@ -203,6 +208,7 @@ public class FirstMap implements Map{
                 map[position[0]][position[1]] != chest;
     }
 
+    @SuppressWarnings("unused")
     public void setMapCordToFloor(int a, int b) {
         map[a][b] = floor;
     }

@@ -21,17 +21,20 @@ public class Game {
         boolean isOn = true;
 
         do {
+            if (isEndGame){
+                System.out.println("Do you dare try again, perhaps on higher difficulty?");
+            }
             menu.mainMenu();
             userInput = scanner.nextLine();
             switch (userInput){
                 case "1" -> startGame();
                 case "2" -> {
-                    System.out.print("Thanks for playing!");
                     isOn = false;
+                    System.out.print("Thanks for playing!");
                 }
                 default -> System.out.println("Enter a option from 1-2");
             }
-        } while (isOn || isEndGame);
+        } while (isOn);
 
     }
     public void startGame() throws InterruptedException {

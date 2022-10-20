@@ -7,6 +7,7 @@ public class Boss extends Monster {
         this.setMaxHP((int) (100*diff));
         this.setDmg((int) (10*diff));
         this.setMana(50);
+        this.setMaxMana(50);
         this.setDefense((int) (5*diff));
     }
 }

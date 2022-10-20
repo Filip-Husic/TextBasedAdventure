@@ -1,5 +1,6 @@
 import battle.Battle;
 import game_interface.Game;
+import monster.Boss;
 import monster.Monster;
 import monster.Skeleton;
 import player.Player;
@@ -11,7 +12,7 @@ public class Main {
 //        game.intro();
         Player player = new Warrior();
         player.setName("Merlin");
-        Monster monster = new Skeleton(2);
+        Monster monster = new Boss(2);
         Battle battle = new Battle();
         battle.battleStart(player, monster);
 

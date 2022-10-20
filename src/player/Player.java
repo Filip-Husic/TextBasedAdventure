@@ -99,8 +99,8 @@ public class Player implements PlayerInterface {
     @Override
     public int attack() {
         int multiplier = multiCheck();
-        int calcDmg = getDmg()*multiplier;
-        switch (multiplier){
+        int calcDmg = getDmg() * multiplier;
+        switch (multiplier) {
             case 2 -> Battle.appendTurnInfo(getName() + " CRIT attacks for " + calcDmg + " damage!\n");
             case 1 -> Battle.appendTurnInfo(getName() + " attacks for " + calcDmg + " damage!\n");
             case 0 -> Battle.appendTurnInfo(getName() + " misses!\n");
@@ -111,7 +111,7 @@ public class Player implements PlayerInterface {
 
     @Override
     public void defend() {
-        setDefense (getDefense() * 2);
+        setDefense(getDefense() * 2);
     }
 
     public void drinkHealthPot() {
@@ -174,9 +174,9 @@ public class Player implements PlayerInterface {
         switch (getClass().getSimpleName()) {
             case "Warrior" -> {
                 int strongAttackDmg = strongAttack();
-                if (strongAttackDmg>0){
-                Battle.appendTurnInfo("A fierce attack for " + strongAttackDmg + " damage!\n");
-                }else {
+                if (strongAttackDmg > 0) {
+                    Battle.appendTurnInfo("A fierce attack for " + strongAttackDmg + " damage!\n");
+                } else {
                     Battle.appendTurnInfo("You attacked too relentlessly and missed!\n");
                 }
                 return strongAttackDmg;
@@ -219,8 +219,9 @@ public class Player implements PlayerInterface {
     public int fireball() {
         return getDmg() * 2;
     }
+
     public void rage() {
-        setDmg(getDmg()*2);
+        setDmg(getDmg() * 2);
     }
 
     public void shadowWalk() {
@@ -243,16 +244,48 @@ public class Player implements PlayerInterface {
         int totalAttack = 0;
         for (int i = 0; i < 20; i++) {
             int tempRandom = (int) (Math.random() * 100);
-            if (tempRandom >= 70 ) {
+            if (tempRandom >= 70) {
                 totalAttack += attack();
             }
         }
         return totalAttack;
     }
-    public String toString(){
+
+    public String toString() {
         return this.getClass().getSimpleName();
     }
-    public void reduceMana(int skillCost){
+
+    public void reduceMana(int skillCost) {
         this.setMana(this.getMana() - skillCost);
+    }
+
+    public int regenHP() {
+        setHp(getHp()+2);
+        return 2;
+    }
+
+
+    public void passive() {
+        switch (getClass().getSimpleName()) {
+            case "Warrior" -> {
+                if (getHp() < getMaxHP()) {
+                    regenHP();
+                    Battle.appendTurnInfo(getName() + " " + regenHP() + " HP!\n");
+                }
+            }
+            case "Rogue" -> {
+                int backStabDmg = backStab();
+                Battle.appendTurnInfo("A cunning strike for " + backStabDmg + " damage!");
+            }
+            case "Archer" -> {
+                int arrowDmg = arrowToTheKnee();
+                Battle.appendTurnInfo("The monster used to be an adventurer like you,\nuntil you shoot it in the knee for " + arrowDmg + " damage!\n");
+            }
+            case "Wizard" -> {
+                int fireballDmg = fireball();
+                Battle.appendTurnInfo("Burn baby, burn for" + fireballDmg + " damage!\n");
+            }
+
+        }
     }
 }

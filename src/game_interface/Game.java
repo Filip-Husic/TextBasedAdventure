@@ -23,6 +23,7 @@ public class Game {
     public void intro() throws InterruptedException {
         menu.welcomeText();
         boolean isOn = true;
+        int exitCount = 0;
 
         do {
             if (isEndGame){
@@ -33,8 +34,26 @@ public class Game {
             switch (userInput){
                 case "1" -> startGame();
                 case "2" -> {
-                    isOn = false;
-                    System.out.print("Thanks for playing!");
+                    if (isEndGame){
+                        isOn = false;
+                    }else {
+
+                        if (exitCount == 0) {
+                            System.out.print("ERROR, you must play the game!");
+                        } else if (exitCount == 1) {
+                            System.out.println("Play the game!");
+                        } else if (exitCount == 2) {
+                            System.out.println("I won't quit!");
+                        } else if (exitCount == 3) {
+                            System.out.print("Okay, quitting game.");
+                            Thread.sleep(1000);
+                            System.out.print(".");
+                            Thread.sleep(1000);
+                            System.out.print(".");
+                            isOn = false;
+                        }
+                        exitCount++;
+                    }
                 }
                 default -> System.out.println("Enter a option from 1-2");
             }

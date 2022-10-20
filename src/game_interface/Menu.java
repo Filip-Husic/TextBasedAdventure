@@ -41,13 +41,13 @@ public class Menu {
                 "      --           _    _ --   Y   (^)   _ (^)  ===   ----\n" +
                 "          __   -  (^)  (^)      --- Y   (^) Y\n" +
                 "      _            Y    Y                Y             " + ANSI_RESET);
-        System.out.println("\nHello adventurer, welcome to the game!");
+        System.out.println("\nHello adventurer, welcome to Dungeons And JAVA!");
     }
 
     public void mainMenu() {
         System.out.println("""
-                \nChoose your fate!
-                \t1. Start a new adventure
+                \nChoose your error!
+                \t1. Start a new project
                 \t2. Exit game
                 """);
     }

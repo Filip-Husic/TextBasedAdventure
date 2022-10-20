@@ -51,10 +51,15 @@ public class Battle {
 
         int startDef = player.getDefense();
         int startDmg = player.getDmg();
+        int turn = 0;
 
         turnInfo.append(ANSI_RED + "\t\t\t  !!BATTLE START!!\n" + ANSI_RESET);
 
         do {
+            if (turn == 3){
+                monster.setDmg(monster.getDmg()*2);
+                turnInfo.append("Monster gets angry and doubles it's damage!");
+            }
             if (player.toString().equals("Archer")){
                 monster.setHp(monster.getHp() - (player.getDmg() - monster.getDefense()));
                 //noinspection UnnecessaryToStringCall
@@ -184,6 +189,7 @@ public class Battle {
             }
             //passive at the end of turn
             player.passive();
+            turn++;
         } while (true);
         turnInfo.delete(0, turnInfo.length());
 

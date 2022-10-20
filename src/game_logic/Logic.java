@@ -30,6 +30,7 @@ public class Logic {
                     battle.battleStart(player,boss);
                 } else {
                     battle.battleStart(player, battle.randMonster(diff));
+                    map.showMap();
                 }
             } else if (map.isNearChest()) {
                 chest.randomStatUp(player);

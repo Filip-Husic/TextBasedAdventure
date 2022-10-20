@@ -1,3 +1,4 @@
+/* //don't need any more, MC
 package game_logic;
 
 import battle.Battle;
@@ -19,13 +20,13 @@ public class LogicBoss {
             secondMap.showMap();
             secondMap.move();
             if (secondMap.isNearMonster()) {
-                System.out.println("Fight");
                 Battle battle = new Battle();
                 battle.battleStart(player,boss);
             } else if (secondMap.isNearChest()) {
                 chest.randomStatUp(player);
             }
-        } while(player.getHp()>0 && boss.getHp() > 0);
+        } while(player.getHp() > 0 && boss.getHp() > 0);
     }
 
 }
+*/

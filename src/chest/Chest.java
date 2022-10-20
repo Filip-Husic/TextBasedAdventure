@@ -13,7 +13,7 @@ public class Chest {
             int randomPotion = (int) (Math.random() * (2 - 1) + 1);
             count++;
 
-            switch (randomPotion) {
+            switch (randomSpec) {
                 case 1 -> {
                     player.setHp(player.getHp() + 2);
                     System.out.println("\nYou receive +2 max HP, your max HP is: " + player.getHp());
@@ -35,11 +35,11 @@ public class Chest {
             switch (randomPotion) {
                 case 1 -> {
                     player.setHealthPot(player.getHealthPot() + 1);
-                    System.out.println("You receive +1 HP potion, your have " + player.getHealthPot() + ".HP potions!");
+                    System.out.println("You receive +1 HP potion, your have " + player.getHealthPot() + " HP potions!");
                 }
                 case 2 -> {
                     player.setManaPot(player.getManaPot() + 1);
-                    System.out.println("You receive +1 MP potion, your have " + player.getManaPot() + ".MP potions!");
+                    System.out.println("You receive +1 MP potion, your have " + player.getManaPot() + " MP potions!");
                 }
             }
         } else {

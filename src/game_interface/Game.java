@@ -1,6 +1,8 @@
 package game_interface;
 
 import game_logic.Logic;
+import map.FirstMap;
+import map.Map;
 import player.*;
 
 import java.util.Scanner;
@@ -15,6 +17,8 @@ public class Game {
     private boolean isEndGame = false;
     private double diff = 0.0;
     private Logic logic = new Logic();
+
+    Map firstMap = new FirstMap();
 
 
     public void intro() throws InterruptedException {
@@ -49,7 +53,7 @@ public class Game {
             case "3" -> diff = 1.5;
             case "4" -> diff = 2;
         }
-        logic.playMap(player, diff);
+        logic.playMap(player, diff, firstMap);
         menu.endGame(player);
         isEndGame = true;
     }

@@ -157,6 +157,8 @@ public class Battle {
         turnInfo.delete(0, turnInfo.length());
         player.setDefense(startDef);
         player.setDmg(startDmg);
+
+
     }
 
 

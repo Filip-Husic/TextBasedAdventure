@@ -148,6 +148,11 @@ public class SecondMap implements Map{
                 Arrays.equals(playerPosition, chestPosition2);
     }
 
+    @Override
+    public boolean isNearExit() { //final map dont have exit
+        return false;
+    }
+
     public void showMap() {
         for (var e : map) {
             System.out.println();

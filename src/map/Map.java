@@ -6,6 +6,10 @@ public interface Map {
     void setMonsterOnMap();
     void setChestOnMap();
     void move();
+    void showMap();
+    boolean isNearMonster();
+    boolean isNearChest();
+    boolean isNearExit();
 
 
 }

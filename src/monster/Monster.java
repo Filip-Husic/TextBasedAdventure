@@ -4,6 +4,8 @@ import battle.Battle;
 
 @SuppressWarnings("unused")
 public class Monster implements Monsters{
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_RED = "\u001B[31m";
 
     private int hp;
     private int dmg;
@@ -65,7 +67,7 @@ public class Monster implements Monsters{
         int multiplier = multiCheck();
         int calcDmg = getDmg()*multiplier;
         switch (multiplier){
-            case 2 -> Battle.appendTurnInfo(this + " CRIT attacks for " + calcDmg + " damage!\n");
+            case 2 -> Battle.appendTurnInfo(this + ANSI_RED + " CRIT " + ANSI_RESET + "attacks for " + calcDmg + " damage!\n");
             case 1 -> Battle.appendTurnInfo(this + " attacks for " + calcDmg + " damage!\n");
             case 0 -> Battle.appendTurnInfo(this + " misses!\n");
         }

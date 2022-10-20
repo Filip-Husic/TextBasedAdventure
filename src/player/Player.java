@@ -4,6 +4,8 @@ import battle.Battle;
 
 @SuppressWarnings("unused")
 public class Player implements PlayerInterface {
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_RED = "\u001B[31m";
     private String name;
     private String role;
     private int hp;
@@ -101,7 +103,7 @@ public class Player implements PlayerInterface {
         int multiplier = multiCheck();
         int calcDmg = getDmg() * multiplier;
         switch (multiplier) {
-            case 2 -> Battle.appendTurnInfo(getName() + " CRIT attacks for " + calcDmg + " damage!\n");
+            case 2 -> Battle.appendTurnInfo(getName() + ANSI_RED + " CRIT " + ANSI_RESET + "attacks for " + calcDmg + " damage!\n");
             case 1 -> Battle.appendTurnInfo(getName() + " attacks for " + calcDmg + " damage!\n");
             case 0 -> Battle.appendTurnInfo(getName() + " misses!\n");
         }
@@ -112,7 +114,7 @@ public class Player implements PlayerInterface {
         int multiplier = multiCheck();
         int calcDmg = getDmg() * multiplier;
         switch (multiplier) {
-            case 2 -> Battle.appendTurnInfo(getName() + " CRIT attacks for " + calcDmg + " damage!\n");
+            case 2 -> Battle.appendTurnInfo(getName() + ANSI_RED + " CRIT " + ANSI_RESET + "attacks for " + calcDmg + " damage!\n");
             case 1 -> Battle.appendTurnInfo(getName() + " attacks for " + calcDmg + " damage!\n");
             case 0 -> Battle.appendTurnInfo(getName() + " misses!\n");
         }
@@ -201,7 +203,7 @@ public class Player implements PlayerInterface {
             }
             case "Rogue" -> {
                 int backStabDmg = backStab();
-                Battle.appendTurnInfo("A cunning strike for " + backStabDmg + " damage!");
+                Battle.appendTurnInfo("A cunning strike for " + backStabDmg + " damage!\n");
                 return backStabDmg;
             }
             case "Archer" -> {
@@ -211,7 +213,7 @@ public class Player implements PlayerInterface {
             }
             case "Wizard" -> {
                 int fireballDmg = fireball();
-                Battle.appendTurnInfo("Burn baby, burn for" + fireballDmg + " damage!\n");
+                Battle.appendTurnInfo("Burn baby, burn for " + fireballDmg + " damage!\n");
                 return fireballDmg;
             }
         }
@@ -235,6 +237,10 @@ public class Player implements PlayerInterface {
     }
 
     public int fireball() {
+        int tempRandom = (int) (Math.random() * 100);
+        if (tempRandom >= 50) {
+            return getDmg()*5;
+        }
         return getDmg() * 2;
     }
 
@@ -263,7 +269,7 @@ public class Player implements PlayerInterface {
         for (int i = 0; i < 20; i++) {
             int tempRandom = (int) (Math.random() * 100);
             if (tempRandom >= 70) {
-                totalAttack += normalAttack();
+                totalAttack += getDmg();
             }
         }
         return totalAttack;

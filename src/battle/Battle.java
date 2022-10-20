@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "UnnecessaryToStringCall"})
 public class Battle {
+    final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_RED = "\u001B[31m";
+
     Player player;
     Monster monster;
     Scanner scanner = new Scanner(System.in);
@@ -102,13 +105,19 @@ public class Battle {
                         userInput = scanner.nextLine();
                         if (userInput.equals("1")) {//TODO
                             if (player.toString().equals("Archer") || player.toString().equals("Wizard")) {
-                                monster.setHp(monster.getHp() - player.skill1());
+                                int skillDmg = player.skill1();
+                                int monsterReceivedDmg = skillDmg - monster.getDefense();
+                                monster.setHp(monster.getHp() - (monsterReceivedDmg));
+                                turnInfo.append(monster.toString()).append(" took ").append(monsterReceivedDmg).append(" damage.\n");
+
                             } else {
                                 player.skill1();
                             }
                         } else if (userInput.equals("2")) {
-                            int skill2 = player.skill2();
-                            monster.setHp(monster.getHp() - skill2);
+                            int skillDmg = player.skill2();
+                            int monsterReceivedDmg = skillDmg - monster.getDefense();
+                            monster.setHp(monster.getHp() - (monsterReceivedDmg));
+                            turnInfo.append(monster.toString()).append(" took ").append(monsterReceivedDmg).append(" damage.\n");
                         }
                     } else {
                         turnInfo.append("You have insufficient mana!");

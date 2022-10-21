@@ -10,7 +10,7 @@ public class Chest {
 
     public void randomStatUp(Player player) throws InterruptedException {
         if (count <= 1) {
-            int randomSpec = new Random().nextInt(5);
+            int randomSpec = new Random().nextInt(1,5);
             int randomPotion = new Random().nextInt(3);
             count++;
 

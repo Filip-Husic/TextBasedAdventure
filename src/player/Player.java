@@ -2,6 +2,8 @@ package player;
 
 import battle.Battle;
 
+import java.util.Random;
+
 @SuppressWarnings("unused")
 public class Player implements PlayerInterface {
     final String ANSI_RESET = "\u001B[0m";
@@ -150,14 +152,14 @@ public class Player implements PlayerInterface {
     @SuppressWarnings("ConstantConditions")
     public int multiCheck() {
         if (toString().equals("Rogue")){
-            int tempRandom = (int) (Math.random() * 100);
+            int tempRandom = new Random().nextInt(0,101);
             if (tempRandom <= 20) {
                 return 2;
             } else if (tempRandom > 20 && tempRandom <= 35) {
                 return 0;
             }
         }
-        int tempRandom = (int) (Math.random() * 100);
+        int tempRandom = new Random().nextInt(0,101);
         if (tempRandom <= 10) {
             return 2;
         } else if (tempRandom > 10 && tempRandom <= 35) {
@@ -224,7 +226,7 @@ public class Player implements PlayerInterface {
     }
 
     public int strongAttack() {
-        int tempRandom = (int) (Math.random() * 100);
+        int tempRandom = new Random().nextInt(0,101);
         if (tempRandom <= 50) {
             return 0;
         }
@@ -240,7 +242,7 @@ public class Player implements PlayerInterface {
     }
 
     public int fireball() {
-        int tempRandom = (int) (Math.random() * 100);
+        int tempRandom = new Random().nextInt(0,101);
         if (tempRandom >= 50) {
             return getDmg()*5;
         }
@@ -259,7 +261,7 @@ public class Player implements PlayerInterface {
     public int rainOfArrows() {
         int totalAttack = 0;
         for (int i = 0; i < 10; i++) {
-            int tempRandom = (int) (Math.random() * 100);
+            int tempRandom = new Random().nextInt(0,101);
             if (tempRandom >= 50) {
                 totalAttack += getDmg();
             }
@@ -270,7 +272,7 @@ public class Player implements PlayerInterface {
     public int lightningStorm() {
         int totalAttack = 0;
         for (int i = 0; i < 20; i++) {
-            int tempRandom = (int) (Math.random() * 100);
+            int tempRandom = new Random().nextInt(0,101);
             if (tempRandom >= 70) {
                 totalAttack += getDmg();
             }

@@ -41,6 +41,7 @@ public class Battle {
 
         int startDef = player.getDefense();
         int startDmg = player.getDmg();
+        boolean freeAtk = true;
         int turn = 0;
 
         turnInfo.append(ANSI_RED + "\t\t\t  !!BATTLE START!!\n" + ANSI_RESET);
@@ -50,10 +51,13 @@ public class Battle {
                 monster.setDmg(monster.getDmg()*2);
                 turnInfo.append("Monster gets angry and doubles it's damage!");
             }
-            if (player.toString().equals("Archer")){
-                monster.setHp(monster.getHp() - (player.getDmg() - monster.getDefense()));
-                //noinspection UnnecessaryToStringCall
-                turnInfo.append(monster.toString()).append(" took ").append(player.getDmg() - monster.getDefense()).append(" damage.\n");
+            if (freeAtk) {
+                if (player.toString().equals("Archer")) {
+                    monster.setHp(monster.getHp() - (player.getDmg() - monster.getDefense()));
+                    //noinspection UnnecessaryToStringCall
+                    turnInfo.append(monster.toString()).append(" took ").append(player.getDmg() - monster.getDefense()).append(" damage.\n");
+                }
+                freeAtk = false;
             }
             battleScreen(player, monster);
             turnInfo.delete(0, turnInfo.length());

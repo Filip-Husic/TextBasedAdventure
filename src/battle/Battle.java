@@ -40,6 +40,7 @@ public class Battle {
         monsters.add(new InfiniteLoop(diff));
         monsters.add(new MissingCurlyBracket(diff));
         monsters.add(new MergeConflict(diff));
+        monsters.add(new ArrayLengthOutOfBounds(diff));
         int random = new Random().nextInt(monsters.size());
         return monsters.get(random);
     }

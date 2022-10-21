@@ -22,6 +22,7 @@ public class Monster implements Monsters{
             case "MergeConflict" -> monsterIcon = '\u2694'; //⚔
             case "MissingCurlyBracket" -> monsterIcon = '\u007D'; // }
             case "NullPointerException" -> monsterIcon = '\u26A0'; // ⚠
+            case "ArrayLengthOutOfBounds" -> monsterIcon = '\u26A1'; //⚡
         }
         return monsterIcon;
     }

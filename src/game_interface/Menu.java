@@ -47,8 +47,10 @@ public class Menu {
     public void mainMenu() {
         System.out.println("""
                 \nChoose your error!
-                \t1. Start a new project
-                \t2. Exit game
+                \t1. Full game
+                \t2. One fight
+                \t3. Survival mode
+                \t0. Exit game
                 """);
     }
 

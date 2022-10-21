@@ -1,5 +1,6 @@
 package game_interface;
 
+import battle.Battle;
 import game_logic.Logic;
 import map.FirstMap;
 import map.Map;
@@ -33,7 +34,9 @@ public class Game {
             userInput = scanner.nextLine();
             switch (userInput){
                 case "1" -> startGame();
-                case "2" -> {
+                case "2" -> oneFight();
+                case "3" -> survivalMode();
+                case "0" -> {
                     if (isEndGame){
                         isOn = false;
                     }else {
@@ -55,7 +58,7 @@ public class Game {
                         exitCount++;
                     }
                 }
-                default -> System.out.println("Enter a option from 1-2");
+                default -> System.out.println("Enter a option from 0-3");
             }
         } while (isOn);
 
@@ -77,6 +80,54 @@ public class Game {
             case "4" -> diff = 2;
         }
         logic.playMap(player, diff, firstMap);
+        menu.endGame(player);
+        isEndGame = true;
+    }
+    public void oneFight() throws InterruptedException {
+        Battle battle = new Battle();
+        menu.chooseDifficulty();
+        String tempDiff;
+        do {
+            tempDiff = scanner.nextLine();
+        } while (!(tempDiff.equals("1") || tempDiff.equals("2") || tempDiff.equals("3") || tempDiff.equals("4")));
+        menu.roleChoice();
+        playerRoleSet();
+        menu.entrance();
+        switch (tempDiff){
+            case "1" -> diff = 0.5;
+            case "2" -> diff = 1;
+            case "3" -> diff = 1.5;
+            case "4" -> diff = 2;
+        }
+        battle.battleStart(player, battle.randMonster(diff));
+        menu.endGame(player);
+        isEndGame = true;
+    }
+    @SuppressWarnings("BusyWait")
+    public void survivalMode() throws InterruptedException {
+        Battle battle = new Battle();
+        menu.chooseDifficulty();
+        String tempDiff;
+        do {
+            tempDiff = scanner.nextLine();
+        } while (!(tempDiff.equals("1") || tempDiff.equals("2") || tempDiff.equals("3") || tempDiff.equals("4")));
+        menu.roleChoice();
+        playerRoleSet();
+        menu.entrance();
+        switch (tempDiff){
+            case "1" -> diff = 0.5;
+            case "2" -> diff = 1;
+            case "3" -> diff = 1.5;
+            case "4" -> diff = 2;
+        }
+        //endless fights until player dies, each turn 50% harder than the one before
+        do {
+        battle.battleStart(player, battle.randMonster(diff));
+        diff*=1.5;
+            System.out.println("Increasing difficulty by 50%");
+            Thread.sleep(1000);
+        }while (player.getHp()>0);
+
         menu.endGame(player);
         isEndGame = true;
     }

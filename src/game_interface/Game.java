@@ -4,6 +4,7 @@ import battle.Battle;
 import game_logic.Logic;
 import map.FirstMap;
 import map.Map;
+import monster.JavaFX;
 import player.*;
 
 import java.util.Scanner;
@@ -105,26 +106,38 @@ public class Game {
     }
     @SuppressWarnings("BusyWait")
     public void survivalMode() throws InterruptedException {
-        int battlesWon = 0;
+        int battlesWon = 1;
         Battle battle = new Battle();
         menu.roleChoice();
         playerRoleSet();
-        diff = 1;
+        int diff = 1;
+        int bossDiff = 1;
         //endless fights until player dies, each turn 50% harder than the one before
         do {
-        battle.battleStart(player, battle.randMonster(diff));
-        if (player.getHp()>0) {
-            diff*=1.5;
-            battlesWon++;
-            System.out.println("Increasing difficulty by 50%");
-            Thread.sleep(1000);
-        }
+            if (battlesWon%5==0){
+                JavaFX javaFX = new JavaFX(bossDiff);
+                battle.battleStart(player, javaFX);
+                if (player.getHp()>0) {
+                    bossDiff*=1.5;
+                    battlesWon++;
+                    System.out.println("Next boss will be 50% more difficult!");
+                    Thread.sleep(1000);
+                }
+            }else{
+                battle.battleStart(player, battle.randMonster(diff));
+                if (player.getHp()>0) {
+                    diff*=1.5;
+                    battlesWon++;
+                    System.out.println("Increasing difficulty by 50%");
+                    Thread.sleep(1000);
+                }
+            }
         }while (player.getHp()>0);
 
         menu.endGame(player);
-        if (battlesWon == 0){
+        if (battlesWon == 1){
             System.out.println("How did you manage to lose on the first battle? GIT GUD!");
-        } else if (battlesWon>0 && battlesWon<5) {
+        } else if (battlesWon>1 && battlesWon<5) {
             System.out.println("You managed to defeat " + battlesWon + " monsters, you can do better!");
         } else if (battlesWon>5 && battlesWon<10) {
             System.out.println("You managed to defeat " + battlesWon + " monsters, not bad!");

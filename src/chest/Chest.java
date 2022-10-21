@@ -15,6 +15,7 @@ public class Chest {
             switch (randomSpec) {
                 case 1 -> {
                     player.setMaxHP(player.getMaxHP() + 10);
+                    player.setHp(player.getHp() + 10);
                     System.out.println("\n\tYou receive +10 max HP, your max HP is: " + player.getHp());
                 }
                 case 2 -> {
@@ -27,6 +28,7 @@ public class Chest {
                 }
                 case 4 -> {
                     player.setMaxMana(player.getMaxMana() + 10);
+                    player.setMana(player.getMana() + 10);
                     System.out.println("\n\tYou receive +10 max Mana, your max Mana is: " + player.getMana());
                 }
             }

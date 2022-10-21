@@ -14,22 +14,22 @@ public class Chest {
 
             switch (randomSpec) {
                 case 1 -> {
-                    player.setMaxHP(player.getMaxHP() + 10);
-                    player.setHp(player.getHp() + 10);
-                    System.out.println("\n\tYou receive +10 max HP, your max HP is: " + player.getHp());
+                    player.setMaxHP(player.getMaxHP() + 20);
+                    player.setHp(player.getHp() + 20);
+                    System.out.println("\n\tYou receive +20 max HP, your max HP is: " + player.getHp());
                 }
                 case 2 -> {
-                    player.setDmg(player.getDmg() + 2);
-                    System.out.println("\n\tYou receive +2 max DMG, your max DMG is: " + player.getDmg());
+                    player.setDmg(player.getDmg() + 5);
+                    System.out.println("\n\tYou receive +5 max DMG, your max DMG is: " + player.getDmg());
                 }
                 case 3 -> {
-                    player.setDefense(player.getDefense() + 2);
-                    System.out.println("\n\tYou receive +2 max DEF, your max DEF is: " + player.getDefense());
+                    player.setDefense(player.getDefense() + 5);
+                    System.out.println("\n\tYou receive +5 max DEF, your max DEF is: " + player.getDefense());
                 }
                 case 4 -> {
-                    player.setMaxMana(player.getMaxMana() + 10);
-                    player.setMana(player.getMana() + 10);
-                    System.out.println("\n\tYou receive +10 max Mana, your max Mana is: " + player.getMana());
+                    player.setMaxMana(player.getMaxMana() + 20);
+                    player.setMana(player.getMana() + 20);
+                    System.out.println("\n\tYou receive +20 max Mana, your max Mana is: " + player.getMana());
                 }
             }
 

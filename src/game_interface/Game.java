@@ -118,7 +118,7 @@ public class Game {
             if (battlesWon%5==0) {
                 battle.battleStart(player, new JavaFX(bossDiff));
                 if (player.getHp()>0) {
-                    bossDiff*=1.5;
+                    bossDiff*=2;
                     battlesWon++;
                     System.out.println("Next boss will be 50% more difficult!");
                     Thread.sleep(1000);
@@ -126,7 +126,7 @@ public class Game {
             }else{
                 battle.battleStart(player, new Monster().randMonster(survivalDiff));
                 if (player.getHp()>0) {
-                    survivalDiff *= 1.5;
+                    survivalDiff *= 1.2;
                     battlesWon++;
                     System.out.println("Increasing difficulty by 50%");
                     Thread.sleep(1000);

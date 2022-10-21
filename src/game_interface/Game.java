@@ -120,7 +120,7 @@ public class Game {
                 if (player.getHp()>0) {
                     bossDiff*=2;
                     battlesWon++;
-                    System.out.println("Next boss will be 50% more difficult!");
+                    System.out.println("Next boss will be twice as difficult!");
                     Thread.sleep(1000);
                 }
             }else{

@@ -2,21 +2,23 @@ package chest;
 
 import player.Player;
 
+import java.util.Random;
+
 public class Chest {
 
     private int count = 0;
 
     public void randomStatUp(Player player) throws InterruptedException {
         if (count <= 1) {
-            int randomSpec = (int) (Math.random() * (4 - 1) + 1);
-            int randomPotion = (int) (Math.random() * (2 - 1) + 1);
+            int randomSpec = new Random().nextInt(5);
+            int randomPotion = new Random().nextInt(3);
             count++;
 
             switch (randomSpec) {
                 case 1 -> {
                     player.setMaxHP(player.getMaxHP() + 20);
                     player.setHp(player.getHp() + 20);
-                    System.out.println("\n\tYou receive +20 max HP, your max HP is: " + player.getHp());
+                    System.out.println("\n\tYou receive +20 max HP, your max HP is: " + player.getMaxHP());
                 }
                 case 2 -> {
                     player.setDmg(player.getDmg() + 5);
@@ -29,7 +31,7 @@ public class Chest {
                 case 4 -> {
                     player.setMaxMana(player.getMaxMana() + 20);
                     player.setMana(player.getMana() + 20);
-                    System.out.println("\n\tYou receive +20 max Mana, your max Mana is: " + player.getMana());
+                    System.out.println("\n\tYou receive +20 max Mana, your max Mana is: " + player.getMaxMana());
                 }
             }
 

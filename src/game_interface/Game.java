@@ -109,9 +109,10 @@ public class Game {
         Battle battle = new Battle();
         menu.roleChoice();
         playerRoleSet();
+        diff = 1;
         //endless fights until player dies, each turn 50% harder than the one before
         do {
-        battle.battleStart(player, battle.randMonster(1));
+        battle.battleStart(player, battle.randMonster(diff));
         if (player.getHp()>0) {
             diff*=1.5;
             battlesWon++;

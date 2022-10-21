@@ -124,8 +124,10 @@ public class Game {
         do {
         battle.battleStart(player, battle.randMonster(diff));
         diff*=1.5;
+        if (player.getHp()>0) {
             System.out.println("Increasing difficulty by 50%");
             Thread.sleep(1000);
+        }
         }while (player.getHp()>0);
 
         menu.endGame(player);

@@ -2,6 +2,9 @@ package monster;
 
 import battle.Battle;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 @SuppressWarnings("unused")
 public class Monster implements Monsters{
     final String ANSI_RESET = "\u001B[0m";
@@ -103,6 +106,16 @@ public class Monster implements Monsters{
     }
     public String toString(){
         return this.getClass().getSimpleName();
+    }
+    public Monster randMonster(double diff){
+        ArrayList<Monster> monsters = new ArrayList<>();
+        monsters.add(new NullPointerException(diff));
+        monsters.add(new InfiniteLoop(diff));
+        monsters.add(new MissingCurlyBracket(diff));
+        monsters.add(new MergeConflict(diff));
+        monsters.add(new ArrayLengthOutOfBounds(diff));
+        int random = new Random().nextInt(monsters.size());
+        return monsters.get(random);
     }
 
 }

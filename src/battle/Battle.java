@@ -34,17 +34,6 @@ public class Battle {
         Battle.defTime = defTime;
     }
 
-    public Monster randMonster(double diff){
-        ArrayList<Monster> monsters = new ArrayList<>();
-        monsters.add(new NullPointerException(diff));
-        monsters.add(new InfiniteLoop(diff));
-        monsters.add(new MissingCurlyBracket(diff));
-        monsters.add(new MergeConflict(diff));
-        monsters.add(new ArrayLengthOutOfBounds(diff));
-        int random = new Random().nextInt(monsters.size());
-        return monsters.get(random);
-    }
-
     public void battleStart(Player player,Monster monster) throws InterruptedException {
 
         boolean hasWon;
@@ -156,7 +145,6 @@ public class Battle {
 
             }while (!isValidChoice);
             if (monster.getHp() <= 0) {
-                //noinspection UnnecessaryToStringCall
                 System.out.printf("You've defeated the %s!! Here is your reward:",monster.toString());
                 player.setDefense(startDef);
                 player.setDmg(startDmg);
@@ -191,7 +179,7 @@ public class Battle {
             //passive at the end of turn
             player.passive();
             turn++;
-        } while (true);
+        } while (player.getHp()>0);
         turnInfo.delete(0, turnInfo.length());
 
 

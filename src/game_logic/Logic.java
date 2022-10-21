@@ -26,7 +26,7 @@ public class Logic {
                 if (map.getClass().getSimpleName().equalsIgnoreCase("secondmap")) {
                     battle.battleStart(player,boss);
                 } else {
-                    battle.battleStart(player, battle.randMonster(diff));
+                    battle.battleStart(player, new Monster().randMonster(diff));
                     map.showMap();
                 }
                 map.setMapCordToFloor();

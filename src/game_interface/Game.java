@@ -5,6 +5,7 @@ import game_logic.Logic;
 import map.FirstMap;
 import map.Map;
 import monster.JavaFX;
+import monster.Monster;
 import player.*;
 
 import java.util.Scanner;
@@ -100,23 +101,22 @@ public class Game {
             case "3" -> diff = 1.5;
             case "4" -> diff = 2;
         }
-        battle.battleStart(player, battle.randMonster(diff));
+        battle.battleStart(player, new Monster().randMonster(diff));
         menu.endGame(player);
         isEndGame = true;
     }
     @SuppressWarnings("BusyWait")
     public void survivalMode() throws InterruptedException {
-        int battlesWon = 1;
         Battle battle = new Battle();
         menu.roleChoice();
         playerRoleSet();
-        int diff = 1;
+        int battlesWon = 1;
+        double survivalDiff = 1;
         int bossDiff = 1;
         //endless fights until player dies, each turn 50% harder than the one before
         do {
-            if (battlesWon%5==0){
-                JavaFX javaFX = new JavaFX(bossDiff);
-                battle.battleStart(player, javaFX);
+            if (battlesWon%5==0) {
+                battle.battleStart(player, new JavaFX(bossDiff));
                 if (player.getHp()>0) {
                     bossDiff*=1.5;
                     battlesWon++;
@@ -124,9 +124,9 @@ public class Game {
                     Thread.sleep(1000);
                 }
             }else{
-                battle.battleStart(player, battle.randMonster(diff));
+                battle.battleStart(player, new Monster().randMonster(survivalDiff));
                 if (player.getHp()>0) {
-                    diff*=1.5;
+                    survivalDiff *= 1.5;
                     battlesWon++;
                     System.out.println("Increasing difficulty by 50%");
                     Thread.sleep(1000);

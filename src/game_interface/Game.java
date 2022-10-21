@@ -105,32 +105,37 @@ public class Game {
     }
     @SuppressWarnings("BusyWait")
     public void survivalMode() throws InterruptedException {
+        int battlesWon = 0;
         Battle battle = new Battle();
-        menu.chooseDifficulty();
-        String tempDiff;
-        do {
-            tempDiff = scanner.nextLine();
-        } while (!(tempDiff.equals("1") || tempDiff.equals("2") || tempDiff.equals("3") || tempDiff.equals("4")));
         menu.roleChoice();
         playerRoleSet();
-        menu.entrance();
-        switch (tempDiff){
-            case "1" -> diff = 0.5;
-            case "2" -> diff = 1;
-            case "3" -> diff = 1.5;
-            case "4" -> diff = 2;
-        }
         //endless fights until player dies, each turn 50% harder than the one before
         do {
-        battle.battleStart(player, battle.randMonster(diff));
-        diff*=1.5;
+        battle.battleStart(player, battle.randMonster(1));
         if (player.getHp()>0) {
+            diff*=1.5;
+            battlesWon++;
             System.out.println("Increasing difficulty by 50%");
             Thread.sleep(1000);
         }
         }while (player.getHp()>0);
 
         menu.endGame(player);
+        if (battlesWon == 0){
+            System.out.println("How did you manage to lose on the first battle? GIT GUD!");
+        } else if (battlesWon>0 && battlesWon<5) {
+            System.out.println("You managed to defeat " + battlesWon + " monsters, you can do better!");
+        } else if (battlesWon>5 && battlesWon<10) {
+            System.out.println("You managed to defeat " + battlesWon + " monsters, not bad!");
+        } else if (battlesWon>10 && battlesWon<15) {
+            System.out.println("You managed to defeat " + battlesWon + " monsters, good!");
+        } else if (battlesWon>15 && battlesWon<20) {
+            System.out.println("You managed to defeat " + battlesWon + " monsters, great!");
+        } else if (battlesWon>20 && battlesWon<25) {
+            System.out.println("You managed to defeat " + battlesWon + " monsters, excellent!");
+        }else {
+            System.out.println("You managed to defeat " + battlesWon + " monsters, you are better at the game than the dev!");
+        }
         isEndGame = true;
     }
 

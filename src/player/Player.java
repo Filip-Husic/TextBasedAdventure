@@ -261,7 +261,7 @@ public class Player implements PlayerInterface {
         for (int i = 0; i < 10; i++) {
             int tempRandom = (int) (Math.random() * 100);
             if (tempRandom >= 50) {
-                totalAttack += normalAttack();
+                totalAttack += getDmg();
             }
         }
         return totalAttack;

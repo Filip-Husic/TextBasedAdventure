@@ -5,10 +5,10 @@ Developed in 3 days for a Java bootcamp project
 Intro
 <img src="pics/Intro screen.png" alt="Intro screen">
 Difficulty & Class Select Screen
-![Difficulty/class selection](pics/diff class selection.png?raw=true "Game intro")
+<img src="pics/diff class selection.png" alt="Intro screen">
 Main game map
-![Map view](pics/map view.png?raw=true)
+<img src="pics/map view.png" alt="Intro screen">
 Battle screen
-![Battle screen](pics/battle screen.png?raw=true)
+<img src="pics/battle screen.png" alt="Battle screen" title="Battle screen">
 
 
